@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEditor;
 using BaseClasses;
 
 [AddComponentMenu("SnakeRush/Movement/Move")]
@@ -8,6 +9,7 @@ public class Move : PhysicsObject {
     [Header("Movement")]
     [SerializeField] private float _speedHorizontal;
     [SerializeField] private float _speedVertical;
+    [SerializeField] [Range(.2f, 10)] private float _lerpSpeed;
 
     private float _moveHorizontal;
     private Vector3 _movementForce;
@@ -26,9 +28,10 @@ public class Move : PhysicsObject {
         _movementForce.z = _speedHorizontal * _moveHorizontal;
         rigidbody.AddForce(_movementForce);
     }
+
     private void UpdateMovementSpeed() {
         _movementSpeed.x = _speedVertical;
-        rigidbody.velocity = _movementSpeed;
+        rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, _movementSpeed, Time.deltaTime * _lerpSpeed);
     }
 
     private void InputHandler() {
