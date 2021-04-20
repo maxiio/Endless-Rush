@@ -125,5 +125,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 0}
-  _speedHorizontal: -50
-  _speedVertical: 5
+  _speedHorizontal: -1
+  _speedVertical: 10
+  _lerpSpeed: 1
