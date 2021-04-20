@@ -507,6 +507,16 @@ PrefabInstance:
       propertyPath: _damageCount
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 5932358530262441449, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
+        type: 3}
+      propertyPath: _hitSummaryTime
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932358530262441449, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
+        type: 3}
+      propertyPath: _hitCallPerSecond
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7305720815878289098, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
         type: 3}
       propertyPath: m_RootOrder
@@ -566,6 +576,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _health
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 8325950205732933644, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
+        type: 3}
+      propertyPath: _isDestroyed
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6, type: 3}
