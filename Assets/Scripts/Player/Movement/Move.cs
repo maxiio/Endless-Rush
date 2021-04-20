@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using UnityEngine;
 using UnityEditor;
 using BaseClasses;
@@ -24,16 +24,19 @@ public class Move : PhysicsObject {
         UpdateMovementSpeed();
     }
 
+    // Update the acceleration on Z axis (left-right moving)
     private void UpdateMovementForce() {
         _movementForce.z = _speedHorizontal * _moveHorizontal;
         rigidbody.AddForce(_movementForce);
     }
 
+    // Update the speed of body while he is stopped
     private void UpdateMovementSpeed() {
         _movementSpeed.x = _speedVertical;
         rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, _movementSpeed, Time.deltaTime * _lerpSpeed);
     }
 
+    // Take the user commands
     private void InputHandler() {
         _moveHorizontal = Input.GetAxis("Horizontal");
     }
