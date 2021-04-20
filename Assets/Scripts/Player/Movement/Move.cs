@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using BaseClasses;
 
 [AddComponentMenu("SnakeRush/Movement/Move")]
@@ -22,15 +21,19 @@ public class Move : PhysicsObject {
         UpdateMovementSpeed();
     }
 
+    // Update the acceleration on Z axis (left-right moving)
     private void UpdateMovementForce() {
         _movementForce.z = _speedHorizontal * _moveHorizontal;
         rigidbody.AddForce(_movementForce);
     }
+
+    // Update the speed of body while he is stopped
     private void UpdateMovementSpeed() {
         _movementSpeed.x = _speedVertical;
         rigidbody.velocity = _movementSpeed;
     }
 
+    // Take the user commands
     private void InputHandler() {
         _moveHorizontal = Input.GetAxis("Horizontal");
     }

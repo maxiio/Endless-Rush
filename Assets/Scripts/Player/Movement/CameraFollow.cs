@@ -17,10 +17,12 @@ public class CameraFollow : MonoBehaviour
         }
     }
 
+    // Calculate new position
     void FixedUpdate() {
         _lerpedPosition = Vector3.Lerp(transform.position, _target.position + _positionOffset, Time.deltaTime * _lerpSpeed);
     }
 
+    // Set camera position after all other object updates
     void LateUpdate() { 
         transform.position = _lerpedPosition;
     }
