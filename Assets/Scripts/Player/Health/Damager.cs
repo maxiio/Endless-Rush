@@ -10,6 +10,8 @@ public class Damager : MonoBehaviour
     // The hit call per second for updating health value
     [SerializeField] [Range(1, 60)] private int _hitCallPerSecond = 10;
 
+    private IEnumerator<WaitForSeconds> _coroutine;
+
     private void Awake() {
         if (!gameObject.GetComponent<HealthComponent>()) {
             throw new Exception("This object doesn't has the HealthComponent");
@@ -18,7 +20,7 @@ public class Damager : MonoBehaviour
 
     // Stop damage the both objects
     private void OnTriggerExit(Collider collider) {
-        StopCoroutine("DamageObjects");
+        StopCoroutine(_coroutine);
     }
 
     // Start damage the both objects
@@ -29,7 +31,8 @@ public class Damager : MonoBehaviour
         if (colliderHealth) {
             float damage = CalculateDamage(colliderHealth.Health);
             float delay = CalculateDelay();
-            StartCoroutine(DamageObjects(colliderHealth, gameObjectHealth, damage, delay));
+            _coroutine = DamageObjects(colliderHealth, gameObjectHealth, damage, delay);
+            StartCoroutine(_coroutine);
         }
     }
 
