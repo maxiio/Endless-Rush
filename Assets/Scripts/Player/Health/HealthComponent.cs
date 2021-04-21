@@ -5,12 +5,12 @@ public class HealthComponent : MonoBehaviour
 {
 	public static event EventHandler IsDie;
 
-	[SerializeField] private float _health;
-	[SerializeField] private bool _isDestroyed = false;
+	[SerializeField] protected float _health;
+	[SerializeField] protected bool _isDestroyed = false;
 
-	public float Health {
+	public virtual float Health {
 		get => _health;
-		private set {
+		protected set {
 			_health = value;
 			if (_health <= 0) {
 				IsDie?.Invoke(this, EventArgs.Empty);
