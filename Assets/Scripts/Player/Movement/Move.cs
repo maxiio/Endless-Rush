@@ -3,8 +3,6 @@ using UnityEngine;
 using UnityEditor;
 using BaseClasses;
 
-[AddComponentMenu("SnakeRush/Movement/Move")]
-[RequireComponent(typeof(Rigidbody))]
 public class Move : PhysicsObject {
     [Header("Movement")]
     [SerializeField] private float _speedHorizontal;
