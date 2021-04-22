@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Border
   - HealthText
+  - UIElem
   layers:
   - Default
   - TransparentFX
