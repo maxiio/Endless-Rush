@@ -534,6 +534,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5413355507899222547, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
+        type: 3}
+      propertyPath: _speedHorizontal
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 5932358530262441449, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
         type: 3}
       propertyPath: _hitSummaryTime
@@ -593,6 +598,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7368977495099587865, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8325950205732933644, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
         type: 3}
