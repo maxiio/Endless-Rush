@@ -9,7 +9,6 @@ public class PlayerHealthComponent : HealthComponent
 
 	public override void Hit(float damage) {
 		base.Hit(damage);
-		Debug.Log("Hit");
 		AmountOfDicreasedHealth?.Invoke(this, damage);
 	}
 }

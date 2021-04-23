@@ -39,7 +39,6 @@ public class ScoreHolder : MonoBehaviour {
     }
 
     private void AddScoreListner(object sender, float amountOfChangedHealth) {
-        Debug.Log("AddScoreListner");
         Add(amountOfChangedHealth);
     }
 }
