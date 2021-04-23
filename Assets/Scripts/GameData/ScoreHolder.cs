@@ -1,8 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class ScoreHolder : MonoBehaviour
-{
+public class ScoreHolder : MonoBehaviour { 
     private float _currentScore = 0;
     private float _maxScore;
 
@@ -31,15 +30,16 @@ public class ScoreHolder : MonoBehaviour
 
     // Subscribe to changers of health component
     private void Awake() {
-        HealthComponent.AmountOfChangedHealth += AddScoreListner;
+        PlayerHealthComponent.AmountOfDicreasedHealth += AddScoreListner;
     }
 
     // Unsubscribe to changers of health component
     private void OnDestroy() {
-        HealthComponent.AmountOfChangedHealth -= AddScoreListner;
+        PlayerHealthComponent.AmountOfDicreasedHealth -= AddScoreListner;
     }
 
     private void AddScoreListner(object sender, float amountOfChangedHealth) {
+        Debug.Log("AddScoreListner");
         Add(amountOfChangedHealth);
     }
 }
