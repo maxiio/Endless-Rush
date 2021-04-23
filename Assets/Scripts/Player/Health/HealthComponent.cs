@@ -5,6 +5,7 @@ public class HealthComponent : MonoBehaviour
 {
 	public static event EventHandler IsDie;
 	public static event EventHandler<float> AmountOfChangedHealth;
+	public event EventHandler<float> CurrentHealth;
 
 	[SerializeField] protected float _health;
 	[SerializeField] protected bool _isDestroyed = false;
@@ -14,6 +15,7 @@ public class HealthComponent : MonoBehaviour
 		get => _health;
 		protected set {
 			_health = value;
+			CurrentHealth?.Invoke(this, value);
 			if (_health < 1) {
 				IsDie?.Invoke(this, EventArgs.Empty);
 				if (_isDestroyed) {
