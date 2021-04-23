@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Border
   - HealthText
+  - UIElem
+  - ScoreText
   layers:
   - Default
   - TransparentFX
