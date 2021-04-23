@@ -10,9 +10,13 @@ public class Damager : MonoBehaviour
     // The hit call per second for updating health value
     [SerializeField] [Range(1, 60)] private int _hitCallPerSecond = 10;
 
-    private IEnumerator<WaitForSeconds> _coroutine;
+    // Add dictionary if we has multiple objects in trigger
+    private Dictionary<int, IEnumerator<WaitForSeconds>> _coroutines;
+        
 
     private void Awake() {
+        _coroutines = new Dictionary<int, IEnumerator<WaitForSeconds>>();
+
         if (!gameObject.GetComponent<HealthComponent>()) {
             throw new Exception("This object doesn't has the HealthComponent");
         }
@@ -20,20 +24,28 @@ public class Damager : MonoBehaviour
 
     // Stop damage the both objects
     private void OnTriggerExit(Collider collider) {
-        StopCoroutine(_coroutine);
+        var colliderHash = collider.GetHashCode();
+        if (_coroutines.ContainsKey(colliderHash)) {
+            StopCoroutine(_coroutines[colliderHash]);
+            _coroutines.Remove(colliderHash);
+        }        
     }
 
     // Start damage the both objects
     private void OnTriggerEnter(Collider collider) {
-        HealthComponent colliderHealth = collider.gameObject.GetComponent<HealthComponent>();
-        HealthComponent gameObjectHealth = gameObject.GetComponent<HealthComponent>();
+        int colliderHash = collider.GetHashCode();
+        if (!_coroutines.ContainsKey(colliderHash)) {
+            HealthComponent colliderHealth = collider.gameObject.GetComponent<HealthComponent>();
+            HealthComponent gameObjectHealth = gameObject.GetComponent<HealthComponent>();
 
-        if (colliderHealth) {
-            float damage = CalculateDamage(colliderHealth.Health);
-            float delay = CalculateDelay();
-            _coroutine = DamageObjects(colliderHealth, gameObjectHealth, damage, delay);
-            StartCoroutine(_coroutine);
-        }
+            if (colliderHealth) {
+                float damage = CalculateDamage(colliderHealth.Health);
+                float delay = CalculateDelay();
+                IEnumerator<WaitForSeconds> coroutine = DamageObjects(colliderHealth, gameObjectHealth, damage, delay);
+                StartCoroutine(coroutine);
+                _coroutines.Add(colliderHash, coroutine);
+            }
+        }            
     }
 
     private float CalculateDamage(float health) {
