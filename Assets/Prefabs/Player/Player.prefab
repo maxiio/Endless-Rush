@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 4711959095278862363}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -171,8 +171,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce3fe21612c9d5b418283d3dcc1b8fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hitSummaryTime: 2
-  _hitCallPerSecond: 20
+  _hitSummaryTime: 10
+  _hitCallPerSecond: 30
 --- !u!114 &4711959095278862363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 6345179553129285016}
   m_Layer: 0
   m_Name: Text
-  m_TagString: Untagged
+  m_TagString: HealthText
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -263,7 +263,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 98765
+  m_Text: 100
 --- !u!1 &8920461088458713982
 GameObject:
   m_ObjectHideFlags: 0
