@@ -14,7 +14,7 @@ public class HealthComponent : MonoBehaviour
 		get => _health;
 		protected set {
 			_health = value;
-			if (_health <= 0) {
+			if (_health < 1) {
 				IsDie?.Invoke(this, EventArgs.Empty);
 				if (_isDestroyed) {
 					Destroy(gameObject);
