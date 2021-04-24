@@ -75,6 +75,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tagName: HealthText
+  _cameraTransform: {fileID: 0}
+  _cameraTag: MainCamera
+  _isXAutorotation: 0
+  _isYAutorotation: 0
+  _isZAutorotation: 0
 --- !u!1 &4881603903770703597
 GameObject:
   m_ObjectHideFlags: 0
