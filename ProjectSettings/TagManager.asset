@@ -8,6 +8,7 @@ TagManager:
   - HealthText
   - UIElem
   - ScoreText
+  - Text
   layers:
   - Default
   - TransparentFX
