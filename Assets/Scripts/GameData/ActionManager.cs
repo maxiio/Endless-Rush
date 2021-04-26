@@ -69,7 +69,7 @@ public class ActionManager : MonoBehaviour
     }
 
     private void RevivePlayer() {
-        throw new NotImplementedException();
+        Restart();
     }
 
     private void Pause() {
