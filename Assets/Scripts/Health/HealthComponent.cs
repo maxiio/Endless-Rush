@@ -3,21 +3,22 @@ using UnityEngine;
 
 public class HealthComponent : MonoBehaviour
 {
-	public static event EventHandler IsDie;
+	public event EventHandler IsDieEvent;
 	public event EventHandler<float> CurrentHealth;
 
 	[SerializeField] protected float _health;
 	[SerializeField] protected bool _isDestroyed = false;
 
 	private float _defaultHealth;
+    private bool _isDie = false;
 
-	public virtual float Health {
+    public virtual float Health {
 		get => _health;
 		protected set {
 			_health = value;
 			CurrentHealth?.Invoke(this, value);
 			if (_health < 1) {
-				IsDie?.Invoke(this, EventArgs.Empty);
+				IsDie = true;
 				if (_isDestroyed) {
 					DestroyObject(gameObject);
                 }
@@ -25,16 +26,30 @@ public class HealthComponent : MonoBehaviour
 		}
 	}
 
+    protected bool IsDie { 
+		get => _isDie;
+		set {
+			_isDie = value;
+			if (value) {
+				IsDieEvent?.Invoke(this, EventArgs.Empty);
+			}
+		} 
+	}
+
     private void Awake() {
 		_defaultHealth = _health;
 	}
 
     public virtual void Hit(float damage) {
-		Health -= damage;
+		if (!_isDie) {
+			Health -= damage;
+        }
 	}
 
 	public void Heal(float health) {
-		Health += health;
+		if (!_isDie) {
+			Health += health;
+        }
     }
 
 	private void StroyObject(GameObject gameObject) {
@@ -43,8 +58,9 @@ public class HealthComponent : MonoBehaviour
 	}
 
 	private void DestroyObject(GameObject gameObject) {
-		gameObject.GetComponentInChildren<Collider>().enabled = false;
-		gameObject.GetComponentInChildren<Renderer>().enabled = false;
+		//gameObject.GetComponentInChildren<Collider>().enabled = false;
+		//gameObject.GetComponentInChildren<Renderer>().enabled = false;
+		Destroy(gameObject);
 	}
 
     public void SetDefaultHealth(GameObject gameObject) {
