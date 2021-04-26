@@ -21,7 +21,8 @@ public class GameOverManager : MonoBehaviour
 
     private void OnDestroy() {
         foreach (GameObject gameObject in _gameObjects) {
-            gameObject.GetComponent<HealthComponent>().IsDieEvent -= GameOverSender;
+            // TO DO is destroyes
+            //gameObject.GetComponent<HealthComponent>().IsDieEvent -= GameOverSender;
         }
     }
 
