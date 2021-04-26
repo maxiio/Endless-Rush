@@ -36,6 +36,16 @@ public class Move : PhysicsObject {
 
     // Take the user commands
     private void InputHandler() {
+#if UNITY_EDITOR_WIN
         _moveHorizontal = Input.GetAxis("Horizontal");
+#endif
+
+#if UNITY_ANDROID
+        Vector3 dir = new Vector3(-Input.acceleration.y, 0, Input.acceleration.x);
+        dir.Normalize();
+        _moveHorizontal = dir.z;
+#endif
+
+        //_moveHorizontal = AndroidInput.secondaryTouchWidth;
     }
 }
