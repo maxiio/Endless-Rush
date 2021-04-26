@@ -1,5 +1,9 @@
-﻿public class ButtonAction
+﻿using System;
+
+public abstract class ButtonAction
 {
+    public static event EventHandler<ActionManager.Request> RequestedAction;
+
     // The all actions which button's can send
     public enum Actions {
         NULL,
@@ -18,16 +22,17 @@
             case Actions.NULL:
                 throw new System.Exception("Handle the Null action");
             case Actions.RESTART:
-            case Actions.PLAY:
                 RestartPlay();
                 UnPause();
                 break;
+            case Actions.PLAY:
+                UnPause();
+                break;
             case Actions.CONTINUE:
-                ContinuePlay();
                 UnPause();
                 break;
             case Actions.REVIVE:
-                Revive();
+                RevivePlayer();
                 UnPause();
                 break;
             case Actions.MENU:
@@ -45,20 +50,22 @@
     }
 
     private static void RestartPlay() {
+        RequestedAction?.Invoke(null, ActionManager.Request.RESTART);
     }
 
-    private static void ContinuePlay() {
-    }
-
-    private static void Revive() {
+    private static void RevivePlayer() {
+        RequestedAction?.Invoke(null, ActionManager.Request.REVIVEPLAYER);
     }
 
     private static void Pause() {
+        RequestedAction?.Invoke(null, ActionManager.Request.PAUSE);
     }
 
     private static void UnPause() {
+        RequestedAction?.Invoke(null, ActionManager.Request.UNPAUSE);
     }
 
     private static void Exit() {
+        RequestedAction?.Invoke(null, ActionManager.Request.EXIT);
     }
 }
