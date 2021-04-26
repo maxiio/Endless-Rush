@@ -30,6 +30,10 @@ public class ScreenTransitionManager : MonoBehaviour
         ChangeScreen(action);
     }
 
+    public void CallAction(ButtonAction.Actions action) {
+        ChangeScreen(action);
+    }
+
     private void ChangeScreen(ButtonAction.Actions action) {
         ButtonAction.HandleAction(action);
 
