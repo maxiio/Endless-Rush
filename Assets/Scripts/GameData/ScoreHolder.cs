@@ -18,6 +18,7 @@ public class ScoreHolder : MonoBehaviour {
     }
 
     public int GetIntScore() => (int)_currentScore;
+    public int GetIntMaxScore() => (int)_maxScore;
 
     public void Add(float amount) {
         Score += amount;
