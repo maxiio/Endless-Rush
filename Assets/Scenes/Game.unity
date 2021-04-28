@@ -534,6 +534,11 @@ PrefabInstance:
       propertyPath: _isZAutorotation
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5685957316787930176, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
+        type: 3}
+      propertyPath: _health
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7305720815878289098, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
         type: 3}
       propertyPath: m_RootOrder
