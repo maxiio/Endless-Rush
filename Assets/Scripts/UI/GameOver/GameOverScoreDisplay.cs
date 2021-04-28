@@ -32,7 +32,6 @@ public class GameOverScoreDisplay : MonoBehaviour
     }    
 
     private void Start() {
-        Debug.Log("Fixed update");
         foreach (var text in _textsOfCurrentScore) {
             SetScoreToText(text, _scoreHolder.GetIntScore());
         }
