@@ -9,6 +9,8 @@ TagManager:
   - UIElem
   - ScoreText
   - Text
+  - CurrentScoreText
+  - MaxScoreText
   layers:
   - Default
   - TransparentFX
