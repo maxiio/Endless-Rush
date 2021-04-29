@@ -14,7 +14,7 @@ public class HealthComponent : MonoBehaviour
 
     public virtual float Health {
 		get => _health;
-		protected set {
+		set {
 			_health = value;
 			CurrentHealth?.Invoke(this, value);
 			if (_health < 1) {
