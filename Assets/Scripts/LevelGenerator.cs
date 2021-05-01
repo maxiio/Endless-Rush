@@ -9,7 +9,10 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private float _delayOfGeneration = 2f;
     [SerializeField] private float _xSpawnPositionOffsetFromPlayer;
     [SerializeField] private float _zSpawnPosition = 0f;
-    
+    [SerializeField] private float _xPlayerTriggerDifference = 0f;
+
+
+    private Vector3 _lastPlayerPostion;
     private WaitForSeconds _destroyDelay = new WaitForSeconds(10f);
     private IEnumerator<WaitForSeconds> _levelGeneratorCoroutine;
 
@@ -20,32 +23,27 @@ public class LevelGenerator : MonoBehaviour
         return spawnPosition;
     }
 
-    IEnumerator<WaitForSeconds> GenerateLevel() {
-        Vector3 spawnPosition;
-        while (true) {
-            yield return new WaitForSeconds(_delayOfGeneration);
-
-            Debug.Log("Spawn");
-
-            float playerHealth = _player.GetComponent<HealthComponent>().Health;
-            //float healthDifference = 1f;
-            //_spawnedObject.GetComponent<HealthComponent>().Health = playerHealth - healthDifference;
-            foreach (var _spawnedObject in _spawnedObjects) {
-                GameObject newBlock = Instantiate(_spawnedObject);
-                newBlock.transform.position = GetSpawnPosition();
-
-                StartCoroutine(DestroyAfterTime(newBlock));
-            }
-            
-        }
-    }
-
     IEnumerator<WaitForSeconds> DestroyAfterTime(GameObject destroyedObject) {
         yield return _destroyDelay;
         Destroy(destroyedObject);
     }
 
+    private GameObject SpawnObjectByIndex(int index) {
+        GameObject newBlock = Instantiate(_spawnedObjects[index]);
+        newBlock.transform.position = GetSpawnPosition();
+        StartCoroutine(DestroyAfterTime(newBlock));
+        return newBlock;
+    }
+
+    IEnumerator<WaitForSeconds> GenerateLevel() {
+        for (int indexOfObject = 0; ; indexOfObject = (indexOfObject + 1) % _spawnedObjects.Length) {
+            yield return new WaitForSeconds(_delayOfGeneration);
+            SpawnObjectByIndex(indexOfObject);            
+        }
+    }
+
     private void Start() {
+        _lastPlayerPostion = _player.transform.position;
         _levelGeneratorCoroutine = GenerateLevel();
         StartCoroutine(_levelGeneratorCoroutine);
     }
