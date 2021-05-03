@@ -52,12 +52,12 @@ public class HealthComponent : MonoBehaviour
         }
     }
 
-	private void StroyObject(GameObject gameObject) {
+	protected void StroyObject(GameObject gameObject) {
 		gameObject.GetComponentInChildren<Collider>().enabled = true;
 		gameObject.GetComponentInChildren<Renderer>().enabled = true;
 	}
 
-	private void DestroyObject(GameObject gameObject) {
+	protected void DestroyObject(GameObject gameObject) {
 		//gameObject.GetComponentInChildren<Collider>().enabled = false;
 		//gameObject.GetComponentInChildren<Renderer>().enabled = false;
 		Destroy(gameObject);
