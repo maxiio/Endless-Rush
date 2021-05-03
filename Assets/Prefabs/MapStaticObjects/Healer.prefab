@@ -89,8 +89,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4082579964070424793}
   - component: {fileID: 1916251538}
-  - component: {fileID: 532995454220245913}
-  - component: {fileID: 5968702339239936533}
+  - component: {fileID: 2658318777759682833}
+  - component: {fileID: 5000485792235846070}
   m_Layer: 0
   m_Name: Healer
   m_TagString: Untagged
@@ -127,7 +127,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &532995454220245913
+--- !u!114 &2658318777759682833
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -136,12 +136,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5591980482789607609}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab11aa77dd7c0e6469e485569493f5a0, type: 3}
+  m_Script: {fileID: 11500000, guid: 49d1c641f9fc29346a8114bead1a3f49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthToHeal: 1337
+  _health: 1
+  _isDestroyed: 1
   _playerTag: Player
---- !u!114 &5968702339239936533
+--- !u!114 &5000485792235846070
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,7 +151,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5591980482789607609}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02cd3bc77a1816e41a0abd6c3495b072, type: 3}
+  m_Script: {fileID: 11500000, guid: 3358400f7ddb0cf41846210935a13b67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _tagName: HealthText
@@ -182,7 +183,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7176753208192237137}
-  m_LocalRotation: {x: 0.6427876, y: 0, z: 0, w: 0.7660445}
+  m_LocalRotation: {x: 0.6427876, y: -0, z: -0, w: 0.76604444}
   m_LocalPosition: {x: 0, y: 0, z: 50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -234,7 +235,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1337
+  m_Text: 1
 --- !u!1 &8813756202815727059
 GameObject:
   m_ObjectHideFlags: 0
