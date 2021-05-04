@@ -1,7 +1,9 @@
 ﻿using System;
 using UnityEngine;
 
-public class ScoreHolder : MonoBehaviour { 
+public class ScoreHolder : MonoBehaviour {
+    [SerializeField] private bool _resetScore;
+
     private float _currentScore = 0;
     private float _maxScore;
     private ScoreData _scoreData;
@@ -45,10 +47,19 @@ public class ScoreHolder : MonoBehaviour {
         return 0f;
     }
 
+    private void ResetScore() {
+        _maxScore = 0;
+        Debug.Log("Score is reset!");
+    }
+
     // Subscribe to changers of health component
     private void Awake() {
         // Get the serialized data
         _maxScore = GetScoreData();
+
+        if (_resetScore) {
+            ResetScore();
+        }
 
         PlayerHealthComponent.AmountOfDicreasedHealth += AddScoreListner;
     }
