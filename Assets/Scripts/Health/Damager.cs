@@ -6,19 +6,18 @@ using UnityEngine;
 public class Damager : MonoBehaviour
 {
     // The summary of damaging objects with any health
-    [SerializeField] [Range(.1f, 10)] private float _hitSummaryTime = 1f;
-    // The hit call per second for updating health value
-    [SerializeField] [Range(1, 60)] private int _hitCallPerSecond = 10;
+    [SerializeField] [Range(1, 10)] private int _hitSummaryTime = 1;
 
     // Add dictionary if we has multiple objects in trigger
     private Dictionary<int, IEnumerator<WaitForSeconds>> _coroutines;
-        
+    // The hit objects for this value != 1 because used in the math log
+    private const int _defaultDamage = 1;
 
     private void Awake() {
         _coroutines = new Dictionary<int, IEnumerator<WaitForSeconds>>();
 
         if (!gameObject.GetComponent<HealthComponent>()) {
-            throw new Exception("This object doesn't has the HealthComponent");
+            throw new ArgumentException("This object doesn't has the HealthComponent");
         }
     }
 
@@ -38,9 +37,10 @@ public class Damager : MonoBehaviour
             HealthComponent colliderHealth = collider.gameObject.GetComponent<HealthComponent>();
             HealthComponent gameObjectHealth = gameObject.GetComponent<HealthComponent>();
 
-            if (colliderHealth) {
-                float damage = CalculateDamage(colliderHealth.Health);
-                float delay = CalculateDelay();
+            if (colliderHealth && colliderHealth.IsDamageOther) {
+                int minHealth = (int)Mathf.Min(colliderHealth.Health, gameObjectHealth.Health);
+                int damage = CalculateDamage(minHealth);
+                float delay = CalculateDelay(damage, minHealth);
                 IEnumerator<WaitForSeconds> coroutine = DamageObjects(colliderHealth, gameObjectHealth, damage, delay);
                 StartCoroutine(coroutine);
                 _coroutines.Add(colliderHash, coroutine);
@@ -48,17 +48,28 @@ public class Damager : MonoBehaviour
         }            
     }
 
-    private float CalculateDamage(float health) {
-        return health / _hitSummaryTime / _hitCallPerSecond;
+    private int CalculateDamage(int health) {
+        if (health < _defaultDamage) {
+            return health;
+        }
+        else {
+            if (health / _defaultDamage > 10) {
+                return (int)(Mathf.Pow(10, Mathf.RoundToInt(Mathf.Log10(health)) - 1));
+            }
+            return _defaultDamage;
+        }
     }
 
-    private float CalculateDelay() {
-        return 1 / _hitCallPerSecond;
+    private float CalculateDelay(int damage, int health) {
+        return damage * _hitSummaryTime / (float)health;
     }
 
     IEnumerator<WaitForSeconds> DamageObjects(HealthComponent enemyHealth, HealthComponent playerHealth
             , float damage, float delay) {
         while (enemyHealth && playerHealth) {
+            if (enemyHealth.Health < damage) {
+                damage = enemyHealth.Health;
+            }
             enemyHealth.Hit(damage);
             playerHealth.Hit(damage);
             yield return new WaitForSeconds(delay);

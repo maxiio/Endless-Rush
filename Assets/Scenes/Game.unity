@@ -724,7 +724,32 @@ PrefabInstance:
     - target: {fileID: 5685957316787930176, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
         type: 3}
       propertyPath: _health
-      value: 5
+      value: 9876
+      objectReference: {fileID: 0}
+    - target: {fileID: 5685957316787930176, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
+        type: 3}
+      propertyPath: _isDestroyed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5685957316787930176, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
+        type: 3}
+      propertyPath: IsDamageOther
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932358530262441449, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
+        type: 3}
+      propertyPath: _defaultDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932358530262441449, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
+        type: 3}
+      propertyPath: _hitSummaryTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5932358530262441449, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
+        type: 3}
+      propertyPath: _hitCallPerSecond
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7305720815878289098, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
         type: 3}
@@ -1104,7 +1129,7 @@ PrefabInstance:
     - target: {fileID: 4082579964070424793, guid: f1727034cc438a7499d0f095d0d7b299,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.32
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4082579964070424793, guid: f1727034cc438a7499d0f095d0d7b299,
         type: 3}
@@ -1317,7 +1342,7 @@ PrefabInstance:
     - target: {fileID: 4082579964070424793, guid: f1727034cc438a7499d0f095d0d7b299,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.32
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4082579964070424793, guid: f1727034cc438a7499d0f095d0d7b299,
         type: 3}
@@ -1734,7 +1759,7 @@ PrefabInstance:
     - target: {fileID: 4082579964070424793, guid: f1727034cc438a7499d0f095d0d7b299,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.32
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4082579964070424793, guid: f1727034cc438a7499d0f095d0d7b299,
         type: 3}
@@ -2001,6 +2026,7 @@ MonoBehaviour:
   _xSpawnPositionOffsetFromPlayer: 20
   _delayOfCheckTriggerSpawn: 0.5
   _xPlayerTriggerDifference: 10
+  _xDistanceToClean: 10
   _setOfObjects:
   - SetOfGameObjects: {fileID: 214468411}
     TypeOfSpawnedObjects: 1
@@ -2112,7 +2138,7 @@ PrefabInstance:
     - target: {fileID: 4082579964070424793, guid: f1727034cc438a7499d0f095d0d7b299,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.32
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4082579964070424793, guid: f1727034cc438a7499d0f095d0d7b299,
         type: 3}
