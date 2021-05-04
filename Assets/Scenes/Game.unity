@@ -622,6 +622,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ScoreManager
       objectReference: {fileID: 0}
+    - target: {fileID: 7548039691438659318, guid: 5e475d35784a3834bb8e64c4d20cd710,
+        type: 3}
+      propertyPath: _resetScore
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8842882976835979550, guid: 5e475d35784a3834bb8e64c4d20cd710,
         type: 3}
       propertyPath: m_RootOrder
@@ -724,7 +729,7 @@ PrefabInstance:
     - target: {fileID: 5685957316787930176, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
         type: 3}
       propertyPath: _health
-      value: 9876
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5685957316787930176, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
         type: 3}
@@ -2051,6 +2056,26 @@ PrefabInstance:
       propertyPath: _target
       value: 
       objectReference: {fileID: 2126772013}
+    - target: {fileID: 4776200833758646102, guid: 3fb3449ea476e0a45ac202a21194c295,
+        type: 3}
+      propertyPath: _lerpSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776200833758646102, guid: 3fb3449ea476e0a45ac202a21194c295,
+        type: 3}
+      propertyPath: _freezeAxis.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776200833758646102, guid: 3fb3449ea476e0a45ac202a21194c295,
+        type: 3}
+      propertyPath: _freezeAxis.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776200833758646102, guid: 3fb3449ea476e0a45ac202a21194c295,
+        type: 3}
+      propertyPath: _freezeAxis.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4776200833758646102, guid: 3fb3449ea476e0a45ac202a21194c295,
         type: 3}
       propertyPath: _positionOffset.x
