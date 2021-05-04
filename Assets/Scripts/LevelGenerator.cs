@@ -4,32 +4,46 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    //enum TypeOfSpawnedObjects {
-    //    NONE,
-    //    UNRANDOM_BLOCKS,
-    //    RANDOM_BLOCKS,
-    //    RANDOM_HEALER
-    //}
+    enum TypeOfSpawnedObjects {
+        NONE,
+        UNRANDOM_BLOCKS,
+        RANDOM_BLOCKS,
+        RANDOM_HEALER
+    }
 
-    //struct SetOfSpawnedObjects {
-    //    public GameObject SetOfGameObjects;
-    //    public TypeOfSpawnedObjects TypeOfSpawnedObjects;
-    //}
+    [Serializable]
+    struct SetOfSpawnedObjects {
+        public GameObject SetOfGameObjects;
+        public TypeOfSpawnedObjects TypeOfSpawnedObjects;
+    }
 
     [SerializeField] private GameObject _player;
-    [SerializeField] private GameObject[] _spawnedObjects;
-    [SerializeField] private float _delayOfGeneration = 2f;
+    [SerializeField] private float _zSpawnPosition;
     [SerializeField] private float _xSpawnPositionOffsetFromPlayer;
-    [SerializeField] private float _zSpawnPosition = 0f;
-    [SerializeField] private float _xPlayerTriggerDifference = 0f;
-    //[SerializeField] private SetOfSpawnedObjects[] _setOfObjects;
+    [SerializeField] private float _delayOfCheckTriggerSpawn = 0.5f;
+    [SerializeField] private float _xPlayerTriggerDifference;
+    [SerializeField] private SetOfSpawnedObjects[] _setOfObjects;
 
-    private Vector3 _lastPlayerPostion;
+    // The minumum health difference with player whick random block should have
+    private const int _blockHealthDifferenceWithPlayer = 1;
+
+    // Chance from 0 to 100
+    private readonly int chanceToDestroyRandomBlocks = 60;
+    private readonly int chanceToDestroyHealers = 70;
+
+    /// <summary>
+    /// Multiplier where 1 - default, 3 - multiply by 3
+    /// This range for random which multiply by playerHealth
+    /// </summary>
+    private readonly (float, float) multiplierStaticBlocksHP = (0.4f, 2f);
+    private readonly (float, float) multiplierRandomBlocksHP = (0.2f, 2f);
+    private readonly (float, float) multiplierHealerHP = (0.2f, 1.6f);
+
     private WaitForSeconds _destroyDelay = new WaitForSeconds(10f);
+    System.Random _rand = new System.Random();
     private IEnumerator<WaitForSeconds> _levelGeneratorCoroutine;
 
     private void Start() {
-        _lastPlayerPostion = _player.transform.position;
         _levelGeneratorCoroutine = GenerateLevel();
         StartCoroutine(_levelGeneratorCoroutine);
     }
@@ -39,18 +53,40 @@ public class LevelGenerator : MonoBehaviour
     }
 
     IEnumerator<WaitForSeconds> GenerateLevel() {
-        for (int indexOfObject = 0; ; indexOfObject = (indexOfObject + 1) % _spawnedObjects.Length) {
-            yield return new WaitForSeconds(_delayOfGeneration);
-            SpawnObject(_spawnedObjects[indexOfObject]);
+        float playerLastPositionX = _player.transform.position.x;
+
+        for (int i = 0; ; i = (i + 1) % _setOfObjects.Length) {
+            while (playerLastPositionX + _xPlayerTriggerDifference > _player.transform.position.x) {
+                yield return new WaitForSeconds(_delayOfCheckTriggerSpawn);
+            }
+            playerLastPositionX = _player.transform.position.x;
+            SpawnObject(_setOfObjects[i].SetOfGameObjects, _setOfObjects[i].TypeOfSpawnedObjects);
+            yield return new WaitForSeconds(_delayOfCheckTriggerSpawn);
         }
     }
 
-    private GameObject SpawnObject(GameObject spawnedObject) {
+    private GameObject SpawnObject(GameObject spawnedObject, TypeOfSpawnedObjects typeOfSpawned) {
         GameObject newSetOfBlocks = SpawnObjectClone(spawnedObject);
         SetPosition(ref newSetOfBlocks);
-        RandomDeleteChildren(ref newSetOfBlocks);
-        SetHealthToChildren(ref newSetOfBlocks);
+        switch (typeOfSpawned) {            
+            case TypeOfSpawnedObjects.UNRANDOM_BLOCKS:
+                SetHealthToChildren(ref newSetOfBlocks, multiplierStaticBlocksHP);
+                break;
+            case TypeOfSpawnedObjects.RANDOM_BLOCKS:
+                RandomDeleteChildren(ref newSetOfBlocks, chanceToDestroyRandomBlocks);
+                SetHealthToChildren(ref newSetOfBlocks, multiplierRandomBlocksHP);
+                break;
+            case TypeOfSpawnedObjects.RANDOM_HEALER:
+                RandomDeleteChildren(ref newSetOfBlocks, chanceToDestroyHealers);
+                SetHealthToChildren(ref newSetOfBlocks, multiplierHealerHP);
+                break;
+            case TypeOfSpawnedObjects.NONE:
+                throw new ArgumentException("TypeOfSpawnedObjects.NONE is getting");
+            default:
+                throw new ArgumentException("Default is getting");
+        }
         StartCoroutine(DestroyAfterTime(newSetOfBlocks));
+
         return newSetOfBlocks;
     }
 
@@ -75,9 +111,11 @@ public class LevelGenerator : MonoBehaviour
         gameObject.transform.position = GetSpawnPosition();
     }
 
-    private void RandomDeleteChildren(ref GameObject newSetOfBlocks) {
+    private void RandomDeleteChildren(ref GameObject newSetOfBlocks, int chanceToDestroy) {
         var rand = new System.Random();
-        var chanceToDestroy = 50; // from 0 to 100
+        if (chanceToDestroy < 0 || 100 < chanceToDestroy ) {
+            throw new ArgumentOutOfRangeException("chanceToDestroy");
+        }
 
         int minNumber = 0;
         int maxNumber = 101;
@@ -92,27 +130,28 @@ public class LevelGenerator : MonoBehaviour
         }
     }
 
-    // Set one of block hp less than on the player becouse it's the ability to play
-    private void SetRandomBlockHealth(ref HealthComponent[] healthOfBlocks, System.Random rand, int newHealth) {
-        if (healthOfBlocks.Length != 0) {
-            int indexOfPlayerHPBlock = rand.Next(0, healthOfBlocks.Length);
-            healthOfBlocks[indexOfPlayerHPBlock].Health = newHealth;
-        }
+    private void SetHealthToChildren(ref GameObject newSetOfBlocks, (float, float) multiplierHP) {
+
+        int healthDifference = _blockHealthDifferenceWithPlayer;
+        int playerHealth = (int)_player.GetComponent<HealthComponent>().Health;
+        HealthComponent[] healthOfBlocks = SetRandomHealthToBlocks(newSetOfBlocks, playerHealth, multiplierHP);
+        healthOfBlocks = SetRandomBlockHealth(healthOfBlocks, playerHealth - healthDifference);
     }
 
-    private void SetHealthToChildren(ref GameObject newSetOfBlocks) {
-        System.Random rand = new System.Random();
-        int playerHealth = (int)_player.GetComponent<HealthComponent>().Health;
-        int percentageMultiplierPlayerHP = 80; // From 0 to 100
-        int healthDifference = 1;
-
+    private HealthComponent[] SetRandomHealthToBlocks(GameObject newSetOfBlocks, int baseHealth, (float, float) multiplierHP) {
         HealthComponent[] healthOfBlocks = newSetOfBlocks.GetComponentsInChildren<HealthComponent>();
         foreach (var block in healthOfBlocks) {
-            block.Health = playerHealth * (1 + rand.Next(0, percentageMultiplierPlayerHP) / 100f); 
+            block.Health = Mathf.Round(baseHealth * _rand.Next((int)(multiplierHP.Item1 * 100), (int)(multiplierHP.Item2 * 100)) / 100f);
         }
-
-        SetRandomBlockHealth(ref healthOfBlocks, rand, playerHealth - healthDifference);
+        return healthOfBlocks;
     }
 
-    
+    // Set one of block hp less than on the player because it's the ability to play
+    private HealthComponent[] SetRandomBlockHealth(HealthComponent[] objectsHealth, int newHealth) {
+        if (objectsHealth.Length != 0) {
+            int indexOfPlayerHPBlock = _rand.Next(0, objectsHealth.Length);
+            objectsHealth[indexOfPlayerHPBlock].Health = newHealth;
+        }
+        return objectsHealth;
+    }
 }
