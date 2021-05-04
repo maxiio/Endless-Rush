@@ -76,15 +76,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScaleFactor: 4
+  m_ReferenceResolution: {x: 600, y: 300}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
+  m_FallbackScreenDPI: 1000
+  m_DefaultSpriteDPI: 1000
   m_DynamicPixelsPerUnit: 1
 --- !u!114 &3645499952709138568
 MonoBehaviour:
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b42f3be878b5f42b811b1c8ff8f73a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startScreen: {fileID: 8781641751751168621}
+  _startAction: 1
   _actionButtons:
   - action: 1
     screen: {fileID: 3645499950940734917}
@@ -133,6 +133,21 @@ MonoBehaviour:
     screen: {fileID: 3670283650276357493}
   - action: 8
     screen: {fileID: 3645499950940734917}
+--- !u!114 &1693306185
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3670283650276357493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a2f607f435e5624eac0c8ac978f23bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _scoreHolder: {fileID: 0}
+  tagOfCurrentScoreText: CurrentScoreText
+  tagOfMaxScoreText: MaxScoreText
 --- !u!1001 &5064832930166406537
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -548,6 +563,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3645499952709138567}
     m_Modifications:
+    - target: {fileID: 3678862495308238884, guid: 7be3a79560014ad4ca1acd3708cddf52,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 24.900146
+      objectReference: {fileID: 0}
     - target: {fileID: 5768990556933743571, guid: 7be3a79560014ad4ca1acd3708cddf52,
         type: 3}
       propertyPath: m_Pivot.x
