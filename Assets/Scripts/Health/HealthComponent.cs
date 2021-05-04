@@ -6,8 +6,9 @@ public class HealthComponent : MonoBehaviour
 	public event EventHandler IsDieEvent;
 	public event EventHandler<float> CurrentHealth;
 
+	public bool IsDamageOther;
 	[SerializeField] protected float _health;
-	[SerializeField] protected bool _isDestroyed = false;
+	[SerializeField] protected bool _isDestroyed;
 
 	private float _defaultHealth;
     private bool _isDie = false;
@@ -42,7 +43,12 @@ public class HealthComponent : MonoBehaviour
 
     public virtual void Hit(float damage) {
 		if (!_isDie) {
-			Health -= damage;
+			if (damage <= Health) {
+				Health -= damage;
+            }
+			else {
+				Health -= Health;
+			}
         }
 	}
 

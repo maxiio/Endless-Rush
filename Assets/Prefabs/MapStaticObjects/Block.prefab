@@ -60,6 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80068667c3325f84c89b7e1843bef62c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsDamageOther: 1
   _health: 50
   _isDestroyed: 1
 --- !u!114 &937022976230452309
@@ -75,11 +76,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tagName: HealthText
+  _isCameraRotationDirection: 0
   _cameraTransform: {fileID: 0}
   _cameraTag: MainCamera
-  _isXAutorotation: 0
-  _isYAutorotation: 0
-  _isZAutorotation: 0
 --- !u!1 &4881603903770703597
 GameObject:
   m_ObjectHideFlags: 0
