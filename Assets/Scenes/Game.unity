@@ -1717,27 +1717,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92fa681a21e2cd44a8ed10fd392b673f, type: 3}
---- !u!1 &1693306184 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3670283650276357493, guid: 136ac0eb9df4f8945a88af9d0afd17cc,
-    type: 3}
-  m_PrefabInstance: {fileID: 3645499951061574606}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1693306185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1693306184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a2f607f435e5624eac0c8ac978f23bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scoreHolder: {fileID: 644900354}
-  tagOfCurrentScoreText: CurrentScoreText
-  tagOfMaxScoreText: MaxScoreText
 --- !u!4 &1718582884 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5921491055888213354, guid: f3fe37a56b860e944acdb211e3ac21c6,
@@ -2405,16 +2384,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1693306185, guid: 136ac0eb9df4f8945a88af9d0afd17cc, type: 3}
+      propertyPath: _scoreHolder
+      value: 
+      objectReference: {fileID: 644900354}
     - target: {fileID: 3645499950940734915, guid: 136ac0eb9df4f8945a88af9d0afd17cc,
         type: 3}
       propertyPath: _scoreHolder
       value: 
       objectReference: {fileID: 644900354}
-    - target: {fileID: 3645499952709138564, guid: 136ac0eb9df4f8945a88af9d0afd17cc,
-        type: 3}
-      propertyPath: _startAction
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3645499952709138567, guid: 136ac0eb9df4f8945a88af9d0afd17cc,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2525,10 +2503,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
-    - target: {fileID: 3670283650276357493, guid: 136ac0eb9df4f8945a88af9d0afd17cc,
+    - target: {fileID: 5878615119956702773, guid: 136ac0eb9df4f8945a88af9d0afd17cc,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      propertyPath: m_AnchoredPosition.x
+      value: 24.900146
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 136ac0eb9df4f8945a88af9d0afd17cc, type: 3}
