@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
 
-public class Healer : MonoBehaviour
+public class HealerHealth : HealthComponent
 {
-    [SerializeField] private float _healthToHeal;
     [SerializeField] private string _playerTag = "Player";
 
-    public float HealthToHeal { get => _healthToHeal; private set { } }
+    // No hits to healer
+    public override void Hit(float damage) {}
 
     private void OnTriggerEnter(Collider collider) {
         if (collider.gameObject.tag == _playerTag) {
             HealthComponent playerHealth = collider.gameObject.GetComponent<HealthComponent>();
-            playerHealth.Heal(_healthToHeal);
+            playerHealth.Heal(Health);
 
-            Destroy(gameObject);
+            DestroyObject(gameObject);
         }
     }
 }
