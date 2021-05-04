@@ -22,6 +22,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private float _xSpawnPositionOffsetFromPlayer;
     [SerializeField] private float _delayOfCheckTriggerSpawn = 0.5f;
     [SerializeField] private float _xPlayerTriggerDifference;
+    [SerializeField] private float _xDistanceToClean = 10;
     [SerializeField] private SetOfSpawnedObjects[] _setOfObjects;
 
     // The minumum health difference with player whick random block should have
@@ -39,7 +40,7 @@ public class LevelGenerator : MonoBehaviour
     private readonly (float, float) multiplierRandomBlocksHP = (0.2f, 2f);
     private readonly (float, float) multiplierHealerHP = (0.2f, 1.6f);
 
-    private WaitForSeconds _destroyDelay = new WaitForSeconds(10f);
+    private WaitForSeconds _checkPlayerInDestroyTrigger = new WaitForSeconds(1f);
     System.Random _rand = new System.Random();
     private IEnumerator<WaitForSeconds> _levelGeneratorCoroutine;
 
@@ -85,7 +86,7 @@ public class LevelGenerator : MonoBehaviour
             default:
                 throw new ArgumentException("Default is getting");
         }
-        StartCoroutine(DestroyAfterTime(newSetOfBlocks));
+        StartCoroutine(DestroyAfterPlayer(newSetOfBlocks));
 
         return newSetOfBlocks;
     }
@@ -97,8 +98,10 @@ public class LevelGenerator : MonoBehaviour
         return spawnPosition;
     }
 
-    IEnumerator<WaitForSeconds> DestroyAfterTime(GameObject destroyedObject) {
-        yield return _destroyDelay;
+    private IEnumerator<WaitForSeconds> DestroyAfterPlayer(GameObject destroyedObject) {
+        while (destroyedObject.transform.position.x + _xDistanceToClean > _player.transform.position.x) {
+            yield return _checkPlayerInDestroyTrigger;
+        }
         Destroy(destroyedObject);
     }
 
