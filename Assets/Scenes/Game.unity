@@ -2371,6 +2371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _objectToTeleport: {fileID: 2126772013}
+  _distanceToTriggerTeleport: 20
 --- !u!4 &2126772013 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7305720815878289098, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
