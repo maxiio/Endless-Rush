@@ -18,4 +18,16 @@ public class ButtonSender : MonoBehaviour
     public void Clicked() {
         ButtonClickedAction?.Invoke(this, _action);
 	}
+
+    private void Update() {
+        if (Input.GetButtonDown("Submit") && _action == ButtonAction.Actions.RESTART) {
+            Clicked();
+        }
+        if (Input.GetButtonDown("Cancel") && _action == ButtonAction.Actions.MENU) {
+            Clicked();
+        }
+        if (Input.GetButtonDown("Cancel") && _action == ButtonAction.Actions.MENU) {
+            Clicked();
+        }
+    }
 }
