@@ -8,6 +8,8 @@ public class Damager : MonoBehaviour
     // The summary of damaging objects with any health
     [SerializeField] [Range(1, 10)] private int _hitSummaryTime = 1;
 
+    [SerializeField] private float _minDelay = 0.04f;
+
     // Add dictionary if we has multiple objects in trigger
     private Dictionary<int, IEnumerator<WaitForSeconds>> _coroutines;
     // The hit objects for this value != 1 because used in the math log
@@ -61,7 +63,11 @@ public class Damager : MonoBehaviour
     }
 
     private float CalculateDelay(int damage, int health) {
-        return damage * _hitSummaryTime / (float)health;
+        float delay = damage * _hitSummaryTime / (float)health;
+        if (float.IsNaN(delay) || delay < _minDelay) {
+            delay = _minDelay;
+        }
+        return delay;
     }
 
     IEnumerator<WaitForSeconds> DamageObjects(HealthComponent enemyHealth, HealthComponent playerHealth
