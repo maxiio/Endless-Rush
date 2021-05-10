@@ -9,6 +9,13 @@ Assets/AssetStoreTools*
 # Git
 *.gitattributes
 
+# IDEA Rider
+.idea/
+*.idea
+.idea/.idea.SnakeRush/.idea/encodings.xml
+.idea/.idea.SnakeRush/.idea/indexLayout.xml
+.idea/.idea.SnakeRush/.idea/vcs.xml
+
 # Visual Studio cache directory
 .vs/
 *.vs
@@ -42,3 +49,4 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
