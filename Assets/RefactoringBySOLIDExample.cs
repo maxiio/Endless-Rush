@@ -1,36 +1,41 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class SelectionManager : MonoBehaviour {
-    [SerializeField] private string selectableTag = "Selectable";
-    [SerializeField] private Material higlightMaterial;
-    [SerializeField] private Material defaultMaterial;
+	[SerializeField] private string selectableTag = "Selectable";
 
-    private Transform _selection;
+	private ISelectionResponse _selectionResponse;
+	private Transform _selection;
+	
+	private void Awake() {
+		_selectionResponse = GetComponent<ISelectionResponse>();
+	}
 
-    private void Update() {
-        if (_selection != null) {
-            var selection = _selection;
-            var selectionRenderer = _selection.GetComponent<Renderer>();
-            if (selectionRenderer != null) {
-                selectionRenderer.material = defaultMaterial;
-            }
-        }
+	private void Update() {
+		// Deselection/Selection Response
+		if (_selection != null) {
+			_selectionResponse.OnDeselect(_selection);
+		}
 
-        var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		#region MyRegion
 
-        _selection = null;
-        if (Physics.Raycast(ray, out var hit)) {
-            var selection = hit.transform;
-            if (selection.CompareTag(selectableTag)) {
-                _selection = selection;
-            }
-        }
+		// Creating a Ray
+		var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-        if (_selection != null) {
-            var selectionRenderer = _selection.GetComponent<Renderer>();
-            if (selectionRenderer != null) {
-                selectionRenderer.material = higlightMaterial;
-            }
-        }
-    }
+		// Selection Determination
+		_selection = null;
+		if (Physics.Raycast(ray, out var hit)) {
+			var selection = hit.transform;
+			if (selection.CompareTag(selectableTag)) {
+				_selection = selection;
+			}
+		}
+
+		#endregion
+
+		// Deselection/Selection Response
+		if (_selection != null) {
+			_selectionResponse.OnSelect(_selection);
+		}
+	}
 }
