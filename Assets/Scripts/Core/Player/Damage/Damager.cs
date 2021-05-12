@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using GameCore.Components.Health;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -39,7 +40,7 @@ public class Damager : MonoBehaviour
             HealthComponent colliderHealth = collider.gameObject.GetComponent<HealthComponent>();
             HealthComponent gameObjectHealth = gameObject.GetComponent<HealthComponent>();
 
-            if (colliderHealth && colliderHealth.IsDamageOther) {
+            if (colliderHealth && colliderHealth.isDamageOther) {
                 int minHealth = (int)Mathf.Min(colliderHealth.Health, gameObjectHealth.Health);
                 int damage = CalculateDamage(minHealth);
                 float delay = CalculateDelay(damage, minHealth);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using GameCore.Components.Health;
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour

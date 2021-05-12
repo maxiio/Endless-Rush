@@ -1,4 +1,5 @@
-﻿using UnityEngine.UI;
+﻿using GameCore.Components.Health;
+using UnityEngine.UI;
 using UnityEngine;
 
 [ExecuteInEditMode]

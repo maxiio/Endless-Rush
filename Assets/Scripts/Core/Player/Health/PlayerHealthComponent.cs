@@ -1,4 +1,5 @@
 ﻿using System;
+using GameCore.Components.Health;
 
 public class PlayerHealthComponent : HealthComponent
 {

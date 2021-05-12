@@ -54,7 +54,7 @@ public abstract class ButtonAction
     }
 
     private static void RevivePlayer() {
-        RequestedAction?.Invoke(null, ActionManager.Request.REVIVEPLAYER);
+        RequestedAction?.Invoke(null, ActionManager.Request.REVIVE);
     }
 
     private static void Pause() {
