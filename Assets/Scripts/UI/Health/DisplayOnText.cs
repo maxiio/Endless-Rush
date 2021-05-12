@@ -1,52 +1,57 @@
-﻿using UnityEngine.UI;
+﻿using System;
 using UnityEngine;
-using System;
+using UnityEngine.UI;
 
-[ExecuteInEditMode]
-public class DisplayOnText : MonoBehaviour {
-    [Tooltip("Set to the child text this tag if you need to display the current health")]
-    [SerializeField] protected string _tagName = "HealthText";
+namespace UI.Health {
+	[ExecuteInEditMode]
+	public class DisplayOnText : MonoBehaviour {
+		[Tooltip("Set to the child text this tag if you need to display the current health")] [SerializeField]
+		protected string tagName = "HealthText";
 
-    [Header("Text look at camera")]
-    [Tooltip("Set rotation of object to camera movement direction")]
-    [SerializeField] protected bool _isCameraRotationDirection;
-    [SerializeField] protected Transform _cameraTransform;
-    [SerializeField] protected string _cameraTag = "MainCamera";
+		[Header("Text look at camera")]
+		[Tooltip("Set rotation of object to camera movement direction")]
+		[SerializeField]
+		protected bool isCameraRotationDirection;
 
-    protected Text[] _texts;
+		[SerializeField] protected Transform cameraTransform;
+		[SerializeField] protected string cameraTag = "MainCamera";
 
-    // Find all text objects at childrens
-    protected virtual void Awake() {
-        _texts = gameObject.GetComponentsInChildren<Text>();
+		private Text[] _texts;
 
-        SetCameraTransform();
-        if (_isCameraRotationDirection) {
-            RotateTextsToCamera();        
-        }
-    }
+		// Find all text objects at children's
+		protected virtual void Awake() {
+			_texts = gameObject.GetComponentsInChildren<Text>();
 
-    // Each text object look at camera
-    private void RotateTextsToCamera() {
-        foreach (var text in _texts) {
-            text.transform.rotation = _cameraTransform.rotation;
-        }
-    }
+			SetCameraTransform();
+			if (isCameraRotationDirection) {
+				RotateTextsToCamera();
+			}
+		}
 
-    // Find camera on the scene by tag
-    protected void SetCameraTransform() {
-        GameObject[] cameras = GameObject.FindGameObjectsWithTag(_cameraTag);
-        if (cameras.Length > 1 && !_cameraTransform) {
-            throw new Exception("On scene more then 2 cameras. Set the camera to DisplayOnText.cs");
-        }
-        _cameraTransform = cameras[0].transform;
-    }    
+		// Each text object look at camera
+		private void RotateTextsToCamera() {
+			foreach (var text in _texts) {
+				text.transform.rotation = cameraTransform.rotation;
+			}
+		}
 
-    // Set to each text the current sender health
-    protected void UpdateText(object sender, float value) {
-        foreach (var textComponent in _texts) {
-            if (textComponent.tag == _tagName) {
-                textComponent.text = ((int)value).ToString();
-            }
-        }
-    }
+		// Find camera on the scene by tag
+		private void SetCameraTransform() {
+			var cameras = GameObject.FindGameObjectsWithTag(cameraTag);
+			if (cameras.Length > 1 && !cameraTransform) {
+				throw new Exception("On scene more then 2 cameras. Set the camera to DisplayOnText.cs");
+			}
+
+			cameraTransform = cameras[0].transform;
+		}
+
+		// Set to each text the current sender health
+		protected void UpdateText(object sender, float value) {
+			foreach (var textComponent in _texts) {
+				if (textComponent.CompareTag(tagName)) {
+					textComponent.text = ((int) value).ToString();
+				}
+			}
+		}
+	}
 }

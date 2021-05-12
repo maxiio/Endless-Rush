@@ -1,14 +1,15 @@
 ﻿using System;
-using GameCore.Components.Health;
+using Core.Components.Health;
 
-public class PlayerHealthComponent : HealthComponent
-{
-	public static event EventHandler<float> AmountOfDicreasedHealth;
+namespace Core.Player.Health {
+	public class PlayerHealthComponent : HealthComponent {
+		public static event EventHandler<float> AmountOfHealthToDecrease;
 
-	public override void Hit(float damage) {
-		if (!IsDie) {
-			base.Hit(damage);
-			AmountOfDicreasedHealth?.Invoke(this, damage);
-        }        
+		public override void Hit(float damage) {
+			if (!IsDie) {
+				base.Hit(damage);
+				AmountOfHealthToDecrease?.Invoke(this, damage);
+			}
+		}
 	}
 }

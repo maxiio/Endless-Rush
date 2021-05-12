@@ -1,8 +1,9 @@
 ﻿using System;
 
-[Serializable]
-public class ScoreData
-{
-    public static string maxScoreName = "maxScore";
-    public float maxScore;
+namespace Core.Managers.ScoreSystem {
+	[Serializable]
+	public class ScoreData {
+		public static string MAXScoreName = "maxScore";
+		public float maxScore;
+	}
 }

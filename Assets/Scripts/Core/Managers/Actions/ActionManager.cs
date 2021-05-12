@@ -1,83 +1,87 @@
 ﻿using System;
-using GameCore.Components.Health;
+using Core.Components.Health;
+using Core.Player.Respawn;
+using UI.ScreenTransition.Button;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class ActionManager : MonoBehaviour {
-	[SerializeField] private GameObject[] gameObjects;
+namespace Core.Managers.Actions {
+	public class ActionManager : MonoBehaviour {
+		[SerializeField] private GameObject[] gameObjects;
 
-	[Header("Restart option")] [SerializeField]
-	private bool isReloadScene;
+		[Header("Restart option")] [SerializeField]
+		private bool isReloadScene;
 
-	private float _defaultTimeScale = 1;
+		private float _defaultTimeScale = 1;
 
-	public enum Request {
-		NULL,
-		RESTART,
-		REVIVE,
-		PAUSE,
-		UNPAUSE,
-		EXIT
-	}
-
-	private void Awake() {
-		_defaultTimeScale = Time.timeScale;
-		ButtonAction.RequestedAction += RequestHandler;
-	}
-
-	private void OnDestroy() {
-		ButtonAction.RequestedAction -= RequestHandler;
-	}
-
-	private void RequestHandler(object sender, Request request) {
-		switch (request) {
-			case Request.NULL:
-				throw new Exception("Call the NULL switch");
-			case Request.RESTART:
-				Restart();
-				break;
-			case Request.REVIVE:
-				RevivePlayer();
-				break;
-			case Request.PAUSE:
-				Pause();
-				break;
-			case Request.UNPAUSE:
-				UnPause();
-				break;
-			case Request.EXIT:
-				Exit();
-				break;
-			default:
-				throw new Exception("Call the default switch");
+		public enum Request {
+			NULL,
+			RESTART,
+			REVIVE,
+			PAUSE,
+			UNPAUSE,
+			EXIT
 		}
-	}
 
-	private void Restart() {
-		if (isReloadScene) {
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		private void Awake() {
+			_defaultTimeScale = Time.timeScale;
+			ButtonAction.RequestedAction += RequestHandler;
 		}
-		else {
-			foreach (var currentObject in gameObjects) {
-				currentObject.GetComponent<RespawnComponent>()?.Respawn();
-				currentObject.GetComponent<HealthComponent>()?.SetDefaultHealth(currentObject);
+
+		private void OnDestroy() {
+			ButtonAction.RequestedAction -= RequestHandler;
+		}
+
+		private void RequestHandler(object sender, Request request) {
+			switch (request) {
+				case Request.NULL:
+					throw new Exception("Call the NULL switch");
+				case Request.RESTART:
+					Restart();
+					break;
+				case Request.REVIVE:
+					RevivePlayer();
+					break;
+				case Request.PAUSE:
+					Pause();
+					break;
+				case Request.UNPAUSE:
+					UnPause();
+					break;
+				case Request.EXIT:
+					Exit();
+					break;
+				default:
+					throw new Exception("Call the default switch");
 			}
 		}
-	}
 
-	private void RevivePlayer() {
-		Restart();
-	}
+		private void Restart() {
+			if (isReloadScene) {
+				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+			}
+			else {
+				foreach (var currentObject in gameObjects) {
+					currentObject.GetComponent<RespawnComponent>()?.Respawn();
+					currentObject.GetComponent<HealthComponent>()?.SetDefaultHealth(currentObject);
+				}
+			}
+		}
 
-	private void Pause() {
-		Time.timeScale = 0;
-	}
+		private void RevivePlayer() {
+			Restart();
+		}
 
-	private void UnPause() {
-		Time.timeScale = _defaultTimeScale;
-	}
+		private void Pause() {
+			Time.timeScale = 0;
+		}
 
-	private static void Exit() {
-		Application.Quit(0);
+		private void UnPause() {
+			Time.timeScale = _defaultTimeScale;
+		}
+
+		private static void Exit() {
+			Application.Quit(0);
+		}
 	}
 }

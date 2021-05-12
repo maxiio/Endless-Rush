@@ -1,49 +1,48 @@
-using System;
+using Core.Player.PhysicsObjectComponent;
 using UnityEngine;
-using UnityEditor;
-using BaseClasses;
 
-public class Move : PhysicsObject {
-    [Header("Movement")]
-    [SerializeField] private float _speedHorizontal;
-    [SerializeField] private float _speedVertical;
-    [SerializeField] [Range(.2f, 10)] private float _lerpSpeed;
+namespace Core.Player.Movement {
+	public class Move : PhysicsObject {
+		[Header("Movement")] [SerializeField] private float speedHorizontal;
+		[SerializeField] private float speedVertical;
+		[SerializeField] [Range(.2f, 10)] private float lerpSpeed;
 
-    private float _moveHorizontal;
-    private Vector3 _movementForce;
-    private Vector3 _movementSpeed;
+		private float _moveHorizontal;
+		private Vector3 _movementForce;
+		private Vector3 _movementSpeed;
 
-    private void Update() {
-        InputHandler();        
-    }   
+		private void Update() {
+			InputHandler();
+		}
 
-    private void FixedUpdate() {
-        UpdateMovementForce();
-        UpdateMovementSpeed();
-    }
+		private void FixedUpdate() {
+			UpdateMovementForce();
+			UpdateMovementSpeed();
+		}
 
-    // Update the acceleration on Z axis (left-right moving)
-    private void UpdateMovementForce() {
-        _movementForce.z = _speedHorizontal * _moveHorizontal;
-        rigidbody.AddForce(_movementForce);
-    }
+		// Update the acceleration on Z axis (left-right moving)
+		private void UpdateMovementForce() {
+			_movementForce.z = speedHorizontal * _moveHorizontal;
+			Rigidbody.AddForce(_movementForce);
+		}
 
-    // Update the speed of body while he is stopped
-    private void UpdateMovementSpeed() {
-        _movementSpeed.x = _speedVertical;
-        rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, _movementSpeed, Time.deltaTime * _lerpSpeed);
-    }
+		// Update the speed of body while he is stopped
+		private void UpdateMovementSpeed() {
+			_movementSpeed.x = speedVertical;
+			Rigidbody.velocity = Vector3.Lerp(Rigidbody.velocity, _movementSpeed, Time.deltaTime * lerpSpeed);
+		}
 
-    // Take the user commands
-    private void InputHandler() {
-        _moveHorizontal = Input.GetAxis("Horizontal");
+		// Take the user commands
+		private void InputHandler() {
+			_moveHorizontal = Input.GetAxis("Horizontal");
 
-        if (_moveHorizontal == 0f) {
+			if (_moveHorizontal == 0f) {
 #if UNITY_ANDROID
-            Vector3 dir = new Vector3(-Input.acceleration.y, 0, Input.acceleration.x);
-            dir.Normalize();
-            _moveHorizontal = dir.z;
+				var dir = new Vector3(-Input.acceleration.y, 0, Input.acceleration.x);
+				dir.Normalize();
+				_moveHorizontal = dir.z;
 #endif
-        }
-    }
+			}
+		}
+	}
 }

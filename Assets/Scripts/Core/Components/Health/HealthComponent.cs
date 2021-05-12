@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace GameCore.Components.Health {
+namespace Core.Components.Health {
 	public class HealthComponent : MonoBehaviour {
 		public event EventHandler IsDieEvent;
 		public event EventHandler<float> CurrentHealth;
