@@ -24,7 +24,7 @@ namespace UI.Score {
 
         private void FixedUpdate() {
             foreach (var text in _texts) {
-                text.text = scoreManager.GetIntScore().ToString();
+                text.text = ((int)scoreManager.CurrentScore).ToString();
             }
         }
     }

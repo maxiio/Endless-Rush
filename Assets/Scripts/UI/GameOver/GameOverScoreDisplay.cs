@@ -33,11 +33,12 @@ namespace UI.GameOver {
 
 		private void Start() {
 			foreach (var text in _textsOfCurrentScore) {
-				SetScoreToText(text, scoreManager.ScoreData.GetIntScore(scoreManager));
+				//SetScoreToText(text, scoreManager.ScoreData.GetIntScore(scoreManager));
+				SetScoreToText(text, (int)scoreManager.CurrentScore);
 			}
 
 			foreach (var text in _textsOfMaxScore) {
-				SetScoreToText(text, scoreManager.GetIntMaxScore());
+				SetScoreToText(text, (int)scoreManager.MAXScore);
 			}
 		}
 
