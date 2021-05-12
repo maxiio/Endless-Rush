@@ -1,4 +1,5 @@
-﻿using Core.Player.Health;
+﻿using Core.Managers.ScoreSystem;
+using Core.Player.Health;
 using UnityEngine;
 
 namespace Core.Managers.ScoreSystem {
@@ -9,17 +10,29 @@ namespace Core.Managers.ScoreSystem {
 		private float _maxScore;
 		private ScoreData _scoreData;
 
-		private float Score {
+		private ScoreSaver _scoreSaver;
+
+		public float Score {
 			get => _currentScore;
 			set {
 				if (value >= 0) {
 					_currentScore = value;
 					if (_maxScore < _currentScore) {
 						_maxScore = _currentScore;
-						SaveScoreData(_currentScore);
+						_scoreSaver.SaveScoreData(_currentScore);
 					}
 				}
 			}
+		}
+
+		public ScoreData ScoreData {
+			set { _scoreData = value; }
+			get { return _scoreData; }
+		}
+
+		public float MAXScore {
+			set { _maxScore = value; }
+			get { return _maxScore; }
 		}
 
 		public int GetIntScore() {
@@ -30,46 +43,16 @@ namespace Core.Managers.ScoreSystem {
 			return (int) _maxScore;
 		}
 
-		// Save local Score to playerPrefs
-		private void SaveScoreData(float value) {
-			Debug.Log("Save Score");
-			PlayerPrefs.SetFloat(ScoreData.MAXScoreName, value);
-		}
-
-		// Increment the local Score on value
-		private void Add(float amount) {
-			Score += amount;
-		}
-
-		// If we need to restart level
-		public void Reset() {
-			Score = 0;
-		}
-
-		// Set the scoreData from the PlayerPrefs to save playerMaxScore
-		private float GetScoreData() {
-			_scoreData = new ScoreData();
-			if (PlayerPrefs.HasKey(ScoreData.MAXScoreName)) {
-				return _scoreData.maxScore = PlayerPrefs.GetFloat(ScoreData.MAXScoreName);
-			}
-
-			return 0f;
-		}
-
-		// Set local max score to zero
-		private void ResetScore() {
-			_maxScore = 0;
-			Debug.Log("Score is reset!");
-		}
-
 		// Subscribe to changes of health component
 		private void Awake() {
+			//_scoreSaver = GetComponent<ScoreSaver>();
+			
 			// Get the serialized data
-			_maxScore = GetScoreData();
+			_maxScore = _scoreSaver.GetScoreData(this);
 
 			// Reset local max score
 			if (resetScore) {
-				ResetScore();
+				_scoreSaver.ResetScore(this);
 			}
 
 			// Subscribe
@@ -84,7 +67,53 @@ namespace Core.Managers.ScoreSystem {
 
 		// Invoke the Score function - Add
 		private void AddScoreListener(object sender, float amountOfChangedHealth) {
-			Add(amountOfChangedHealth);
+			_scoreSaver.Add(amountOfChangedHealth, this);
 		}
+	}
+}
+
+public class ScoreSaver : MonoBehaviour {
+	private float _currentScore;
+	private float _maxScore;
+	private ScoreData _scoreData;
+
+	private float Score {
+		get => _currentScore;
+		set {
+			if (value >= 0) {
+				_currentScore = value;
+				if (_maxScore < _currentScore) {
+					_maxScore = _currentScore;
+					SaveScoreData(_currentScore);
+				}
+			}
+		}
+	}
+
+	public void Add(float amount, ScoreManager scoreManager) {
+		scoreManager.Score += amount;
+	}
+
+	public float GetScoreData(ScoreManager scoreManager) {
+		scoreManager.ScoreData = new ScoreData();
+		if (PlayerPrefs.HasKey(ScoreData.MAXScoreName)) {
+			return scoreManager.ScoreData.maxScore = PlayerPrefs.GetFloat(ScoreData.MAXScoreName);
+		}
+
+		return 0f;
+	}
+
+	public void ResetScore(ScoreManager scoreManager) {
+		scoreManager.MAXScore = 0;
+		Debug.Log("Score is reset!");
+	}
+
+	public void SaveScoreData(float value) {
+		Debug.Log("Save Score");
+		PlayerPrefs.SetFloat(ScoreData.MAXScoreName, value);
+	}
+
+	public void Reset(ScoreManager scoreManager) {
+		scoreManager.Score = 0;
 	}
 }
