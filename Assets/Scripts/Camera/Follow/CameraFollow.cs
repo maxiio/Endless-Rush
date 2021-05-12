@@ -1,63 +1,68 @@
 ﻿using System;
 using UnityEngine;
 
-public class CameraFollow : MonoBehaviour
-{
-    [Serializable]
-    struct Axis {
-        public bool x;
-        public bool y;
-        public bool z;
-    }
+namespace Camera.Follow {
+	public class CameraFollow : MonoBehaviour {
+		[Serializable]
+		private struct Axis {
+			public bool x;
+			public bool y;
+			public bool z;
+		}
 
-    [Header("Object to follow")]
-    [SerializeField] private Transform _target;
-    [SerializeField] private Axis _freezeAxis;
-    [SerializeField] private float _lerpSpeed;
+		[Header("Object to follow")] [SerializeField]
+		private Transform target;
 
-    [SerializeField] private bool _IsUsePositionOffset;
-    [SerializeField] private Vector3 _positionOffset;
+		[SerializeField] private Axis freezeAxis;
+		[SerializeField] private float lerpSpeed;
 
-    private Vector3 _lerpedPosition;
-    private Vector3 _defaultPosition;
+		[SerializeField] private bool isUsePositionOffset;
+		[SerializeField] private Vector3 positionOffset;
 
-    private void Awake() {
-        if (!_target) {            
-            throw new Exception("No target at camera");
-        }
+		private Vector3 _lerpPosition;
+		private Vector3 _defaultPosition;
 
-        // Set to offset the start default camera position
-        if (!_IsUsePositionOffset) {
-            _positionOffset = gameObject.transform.position;
-        }
+		private void Awake() {
+			if (!target) {
+				throw new Exception("No target at camera");
+			}
 
-        CalculateNewPosition();
-        _defaultPosition = _lerpedPosition;
-    }
+			// Set to offset the start default camera position
+			if (!isUsePositionOffset) {
+				positionOffset = gameObject.transform.position;
+			}
 
-    private void CalculateNewPosition() {
-        _lerpedPosition = Vector3.Lerp(transform.position, _target.position + _positionOffset, Time.deltaTime * _lerpSpeed);
-        FreezeCameraMovementAxis(ref _lerpedPosition);
-    }
+			CalculateNewPosition();
+			_defaultPosition = _lerpPosition;
+		}
 
-    private void FreezeCameraMovementAxis(ref Vector3 position) {
-        if (_freezeAxis.x) {
-            position.x = _defaultPosition.x;
-        }
-        if (_freezeAxis.y) {
-            position.y = _defaultPosition.y;
-        }
-        if (_freezeAxis.z) {
-            position.z = _defaultPosition.z;
-        }
-    }
+		private void CalculateNewPosition() {
+			_lerpPosition = Vector3.Lerp(transform.position, target.position + positionOffset,
+				Time.deltaTime * lerpSpeed);
+			FreezeCameraMovementAxis(ref _lerpPosition);
+		}
 
-    void FixedUpdate() {
-        CalculateNewPosition();
-    }
+		private void FreezeCameraMovementAxis(ref Vector3 position) {
+			if (freezeAxis.x) {
+				position.x = _defaultPosition.x;
+			}
 
-    // Set camera position after all other object updates
-    void LateUpdate() { 
-       transform.position = _lerpedPosition;
-    }
+			if (freezeAxis.y) {
+				position.y = _defaultPosition.y;
+			}
+
+			if (freezeAxis.z) {
+				position.z = _defaultPosition.z;
+			}
+		}
+
+		private void FixedUpdate() {
+			CalculateNewPosition();
+		}
+
+		// Set camera position after all other object updates
+		private void LateUpdate() {
+			transform.position = _lerpPosition;
+		}
+	}
 }

@@ -60,9 +60,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80068667c3325f84c89b7e1843bef62c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsDamageOther: 1
-  _health: 50
-  _isDestroyed: 1
+  isDamageOther: 1
+  health: 0
+  isDestroyed: 1
 --- !u!114 &937022976230452309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,7 +355,7 @@ PrefabInstance:
     - target: {fileID: 8787825281500458407, guid: d32833933dc7b204ab14fd3fb482b4b4,
         type: 3}
       propertyPath: m_Text
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d32833933dc7b204ab14fd3fb482b4b4, type: 3}
@@ -485,7 +485,7 @@ PrefabInstance:
     - target: {fileID: 8787825281500458407, guid: d32833933dc7b204ab14fd3fb482b4b4,
         type: 3}
       propertyPath: m_Text
-      value: 50
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d32833933dc7b204ab14fd3fb482b4b4, type: 3}
