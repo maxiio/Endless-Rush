@@ -1,6 +1,6 @@
 ﻿namespace SaveData {
 	public interface IDataSaver {
-		float GetData();
-		void SaveData(float value);
+		float GetData(string nameOfScore);
+		void SaveData(string nameOfScore, float value);
 	}
 }
