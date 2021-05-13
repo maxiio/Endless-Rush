@@ -566,6 +566,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7548039691438659318, guid: 5e475d35784a3834bb8e64c4d20cd710,
         type: 3}
+      propertyPath: resetScore
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7548039691438659318, guid: 5e475d35784a3834bb8e64c4d20cd710,
+        type: 3}
       propertyPath: _resetScore
       value: 0
       objectReference: {fileID: 0}
@@ -827,7 +832,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 473092383}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1705711069}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f56c685fde679854abbe6648c4dc1be5, type: 3}
@@ -1652,6 +1657,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92fa681a21e2cd44a8ed10fd392b673f, type: 3}
+--- !u!1 &1705711069 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1656109949958632627, guid: 5e475d35784a3834bb8e64c4d20cd710,
+    type: 3}
+  m_PrefabInstance: {fileID: 473092383}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1705711070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1705711069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55a38fc9d53c4e09945b6c3031224a46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1754697537
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2303,6 +2326,10 @@ PrefabInstance:
       propertyPath: _scoreHolder
       value: 
       objectReference: {fileID: 644900354}
+    - target: {fileID: 1693306185, guid: 136ac0eb9df4f8945a88af9d0afd17cc, type: 3}
+      propertyPath: scoreManager
+      value: 
+      objectReference: {fileID: 644900354}
     - target: {fileID: 3645499950940734915, guid: 136ac0eb9df4f8945a88af9d0afd17cc,
         type: 3}
       propertyPath: scoreHolder
@@ -2311,6 +2338,11 @@ PrefabInstance:
     - target: {fileID: 3645499950940734915, guid: 136ac0eb9df4f8945a88af9d0afd17cc,
         type: 3}
       propertyPath: _scoreHolder
+      value: 
+      objectReference: {fileID: 644900354}
+    - target: {fileID: 3645499950940734915, guid: 136ac0eb9df4f8945a88af9d0afd17cc,
+        type: 3}
+      propertyPath: scoreManager
       value: 
       objectReference: {fileID: 644900354}
     - target: {fileID: 3645499952709138564, guid: 136ac0eb9df4f8945a88af9d0afd17cc,

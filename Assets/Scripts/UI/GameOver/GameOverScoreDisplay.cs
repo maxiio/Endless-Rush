@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace UI.GameOver {
 	public class GameOverScoreDisplay : MonoBehaviour {
-		[SerializeField] private ScoreHolder scoreHolder;
+		[SerializeField] private ScoreManager scoreManager;
 		[SerializeField] private string tagOfCurrentScoreText = "CurrentScoreText";
 		[SerializeField] private string tagOfMaxScoreText = "MaxScoreText";
 		private Text[] _textsOfCurrentScore;
@@ -15,7 +15,7 @@ namespace UI.GameOver {
 
 		// Initialize the _texts array which contain the ScoreUIText and MaxScoreUIText objects
 		private void Awake() {
-			if (!scoreHolder) {
+			if (!scoreManager) {
 				throw new Exception("Set the ScoreHolder to UpdateScore");
 			}
 
@@ -33,11 +33,12 @@ namespace UI.GameOver {
 
 		private void Start() {
 			foreach (var text in _textsOfCurrentScore) {
-				SetScoreToText(text, scoreHolder.GetIntScore());
+				//SetScoreToText(text, scoreManager.ScoreData.GetIntScore(scoreManager));
+				SetScoreToText(text, (int)scoreManager.CurrentScore);
 			}
 
 			foreach (var text in _textsOfMaxScore) {
-				SetScoreToText(text, scoreHolder.GetIntMaxScore());
+				SetScoreToText(text, (int)scoreManager.MAXScore);
 			}
 		}
 
