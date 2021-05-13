@@ -1,4 +1,5 @@
 using Core.Player.PhysicsObjectComponent;
+using Input;
 using UnityEngine;
 
 namespace Core.Player.Movement {
@@ -10,6 +11,13 @@ namespace Core.Player.Movement {
 		private float _moveHorizontal;
 		private Vector3 _movementForce;
 		private Vector3 _movementSpeed;
+		private IInputHandler _input;
+
+		protected override void Awake() {
+			base.Awake();
+			
+			_input = GetComponent<IInputHandler>();
+		}
 
 		private void Update() {
 			InputHandler();
@@ -34,15 +42,8 @@ namespace Core.Player.Movement {
 
 		// Take the user commands
 		private void InputHandler() {
-			_moveHorizontal = Input.GetAxis("Horizontal");
-
-			if (_moveHorizontal == 0f) {
-#if UNITY_ANDROID
-				var dir = new Vector3(-Input.acceleration.y, 0, Input.acceleration.x);
-				dir.Normalize();
-				_moveHorizontal = dir.z;
-#endif
-			}
+			// Get the horizontal direction
+			_moveHorizontal = _input.GetHorizontal();
 		}
 	}
 }
