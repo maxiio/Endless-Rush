@@ -1,4 +1,5 @@
 ﻿using System;
+using Input;
 using UnityEngine;
 
 namespace UI.ScreenTransition.Button {
@@ -8,6 +9,7 @@ namespace UI.ScreenTransition.Button {
 
 		// This action is send to the subscribers
 		[SerializeField] private ButtonAction.Actions action;
+		private IInputHandler _inputHandler;
 
 		private void Awake() {
 			if (action == ButtonAction.Actions.NULL) {
@@ -18,20 +20,6 @@ namespace UI.ScreenTransition.Button {
 		// This method is called from buttonOnClick
 		public void Clicked() {
 			ButtonClickedAction?.Invoke(this, action);
-		}
-
-		private void Update() {
-			if (Input.GetButtonDown("Submit") && action == ButtonAction.Actions.RESTART) {
-				Clicked();
-			}
-
-			if (Input.GetButtonDown("Cancel") && action == ButtonAction.Actions.MENU) {
-				Clicked();
-			}
-
-			if (Input.GetButtonDown("Cancel") && action == ButtonAction.Actions.MENU) {
-				Clicked();
-			}
 		}
 	}
 }
