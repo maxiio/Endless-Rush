@@ -1,62 +1,73 @@
 ﻿using System;
+using Core.Managers.GameOver;
+using UI.ScreenTransition.Button;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 namespace Audio {
 	public class AudioManager : MonoBehaviour {
-		
-
 		[Header("Audio Settings")] [SerializeField]
 		private AudioSource audioSource;
+
+		[SerializeField] private ButtonAction.Actions actionAtStart = ButtonAction.Actions.PLAY;
 
 		[Header("Music Settings")] [SerializeField]
 		private float musicVolume = 0.5f;
 
 		[SerializeField] private bool isMusicEnabled = true;
 		[SerializeField] private AudioClips musicClips;
-		//[SerializeField] private ClipDictionary[] musicClips;
 
 		public bool IsMusicEnabled {
 			get => isMusicEnabled;
 			set {
 				if (isMusicEnabled != value) {
 					isMusicEnabled = value;
-					// TODO : Check this statement, why we should to change volume
 					audioSource.volume = value ? musicVolume : 0f;
-					// Here we can SAVE to prefs the settings
 				}
 			}
+		}
+
+		private void Awake() {
+			ButtonSender.ButtonClickedAction += HandleAction;
+			GameOverManager.IsGameOver += HandleAction;
 		}
 
 		private void Start() {
-			Play(AudioClips.ClipName.START_MENU, true);
+			HandleAction(this, actionAtStart);
 		}
 
-
-		public void Play(AudioClips.ClipName clipName, bool isLoop = false, float volume = 1f) {
-			audioSource = GetAudioSource(clipName, isLoop, volume);
-			audioSource.Play();
-		}
-		
-		public void PlayOneShot(AudioClips.ClipName clipName) {
-			audioSource.PlayOneShot(GetAudioClipByName(clipName));
+		private void OnDestroy() {
+			ButtonSender.ButtonClickedAction -= HandleAction;
+			GameOverManager.IsGameOver -= HandleAction;
 		}
 
-		private AudioSource GetAudioSource(AudioClips.ClipName clipName, bool isLoop, float volume) {
-			AudioSource source = audioSource;
-			source.clip = GetAudioClipByName(clipName);
-			source.volume = volume;
-			source.loop = isLoop;
-			return source;
+		private void HandleAction(object sender, ButtonAction.Actions action) {
+			PlayByAction(action);
 		}
 
-		private AudioClip GetAudioClipByName(AudioClips.ClipName clipName) {
-			foreach (var clip in musicClips.clips) {
-				if (clip.clipName == clipName) {
-					return clip.audioClip;
-				}
+		private void PlayByAction(ButtonAction.Actions action) {
+			var currentClipData = musicClips.GetClipByAction(action);
+			Play(currentClipData.audioClip, currentClipData.isLoop);
+		}
+
+		private void Play(AudioClip clip, bool isLoop = false) {
+			if (!IsMusicEnabled) {
+				return;
+			}
+			
+			if (!clip) {
+				Debug.LogWarning("Can't play null clip");
+				return;
 			}
 
-			throw new InvalidOperationException($"Not found clip {clipName} at clips dictionary");
+			if (!audioSource) {
+				Debug.LogError("audioSource is null");
+				return;
+			}
+
+			audioSource.clip = clip;
+			audioSource.loop = isLoop;
+			audioSource.Play();
 		}
 	}
 }
