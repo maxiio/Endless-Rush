@@ -7,10 +7,11 @@ using UnityEngine.SceneManagement;
 
 namespace Core.Managers.Actions {
 	public class ActionManager : MonoBehaviour {
+		[Header("Object to revive")]
 		[SerializeField] private GameObject[] gameObjects;
 
-		[Header("Restart option")] [SerializeField]
-		private bool isReloadScene;
+		[Header("Revive option")]
+		[SerializeField] private Vector3 offsetPosition = new Vector3(5, 0, 0);
 
 		private float _defaultTimeScale = 1;
 
@@ -40,7 +41,7 @@ namespace Core.Managers.Actions {
 					Restart();
 					break;
 				case Request.REVIVE:
-					RevivePlayer();
+					Revive();
 					break;
 				case Request.PAUSE:
 					Pause();
@@ -57,19 +58,14 @@ namespace Core.Managers.Actions {
 		}
 
 		private void Restart() {
-			if (isReloadScene) {
-				SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-			}
-			else {
-				foreach (var currentObject in gameObjects) {
-					currentObject.GetComponent<RespawnComponent>()?.Respawn();
-					currentObject.GetComponent<HealthComponent>()?.SetDefaultHealth(currentObject);
-				}
-			}
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		}
 
-		private void RevivePlayer() {
-			Restart();
+		private void Revive() {
+			foreach (var currentObject in gameObjects) {
+				currentObject.GetComponent<Transform>().position += offsetPosition;
+				currentObject.GetComponent<HealthComponent>()?.Revive(currentObject);
+			}
 		}
 
 		private void Pause() {

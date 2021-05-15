@@ -21,7 +21,7 @@ namespace Core.Components.Health {
 				if (health < 1) {
 					IsDie = true;
 					if (isDestroyed) {
-						DestroyObject(gameObject);
+						Destroy(gameObject);
 					}
 				}
 			}
@@ -60,20 +60,9 @@ namespace Core.Components.Health {
 			}
 		}
 
-		private static void ImplementObject(GameObject gameObjectToImplement) {
-			gameObjectToImplement.GetComponentInChildren<Collider>().enabled = true;
-			gameObjectToImplement.GetComponentInChildren<Renderer>().enabled = true;
-		}
-
-		private static void DestroyObject(GameObject gameObjectToDestroy) {
-			//gameObject.GetComponentInChildren<Collider>().enabled = false;
-			//gameObject.GetComponentInChildren<Renderer>().enabled = false;
-			Destroy(gameObjectToDestroy);
-		}
-
-		public void SetDefaultHealth(GameObject gameObjectToChange) {
-			ImplementObject(gameObjectToChange);
+		public void Revive(GameObject gameObjectToChange) {
 			Health = _defaultHealth;
+			IsDie = false;
 		}
 	}
 }
