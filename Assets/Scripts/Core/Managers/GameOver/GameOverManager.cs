@@ -6,6 +6,8 @@ using UnityEngine;
 
 namespace Core.Managers.GameOver {
 	public class GameOverManager : MonoBehaviour {
+		public static event EventHandler<ButtonAction.Actions> IsGameOver;
+		
 		[Header("GameObjects which send the dead notification")] [SerializeField]
 		private GameObject[] gameObjects;
 
@@ -18,12 +20,9 @@ namespace Core.Managers.GameOver {
 			}
 		}
 
-		// private void OnDestroy() {
-		// 	throw new NotImplementedException("OnDestroy doesn't implement");
-		// }
-
 		private void GameOverSender(object sender, EventArgs e) {
 			screenManager.CallAction(ButtonAction.Actions.GAMEOVER);
+			IsGameOver?.Invoke(this, ButtonAction.Actions.GAMEOVER);
 		}
 	}
 }
