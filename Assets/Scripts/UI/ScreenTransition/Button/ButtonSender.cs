@@ -1,5 +1,6 @@
 ﻿using System;
 using Input;
+using UnityEditor;
 using UnityEngine;
 
 namespace UI.ScreenTransition.Button {
@@ -8,10 +9,9 @@ namespace UI.ScreenTransition.Button {
 		public static event EventHandler<ButtonAction.Actions> ButtonClickedAction;
 
 		// This action is send to the subscribers
-		[SerializeField] private ButtonAction.Actions action;
-		private IInputHandler _inputHandler;
+		[SerializeField] protected ButtonAction.Actions action;
 
-		private void Awake() {
+		protected void Awake() {
 			if (action == ButtonAction.Actions.NULL) {
 				throw new Exception("Set the action at ButtonSender");
 			}
