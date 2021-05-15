@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6180326509332737161}
   - component: {fileID: 1087292608254919363}
   - component: {fileID: 2178723222135256772}
-  - component: {fileID: 2970337757540268407}
+  - component: {fileID: 7916073946884725831}
   m_Layer: 5
   m_Name: ReviveButton
   m_TagString: Untagged
@@ -120,7 +120,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2970337757540268407}
+      - m_Target: {fileID: 7916073946884725831}
         m_MethodName: Clicked
         m_Mode: 1
         m_Arguments:
@@ -131,7 +131,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &2970337757540268407
+--- !u!114 &7916073946884725831
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,10 +140,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2569249481463139687}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 842c7d4e02347eb49820eb647e87ad78, type: 3}
+  m_Script: {fileID: 11500000, guid: 7239572fca2b4dd38d03c5ba8f4c01a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   action: 8
+  settings: {fileID: 11400000, guid: 006909ce50a662d4b93fca5953dbdc97, type: 2}
 --- !u!1001 &9064123827548590090
 PrefabInstance:
   m_ObjectHideFlags: 0
