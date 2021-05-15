@@ -7,12 +7,12 @@ using UnityEngine;
 namespace Core.Managers.GameOver {
 	public class GameOverManager : MonoBehaviour {
 		public static event EventHandler<ButtonAction.Actions> IsGameOver;
-		
-		[Header("GameObjects which send the dead notification")] [SerializeField]
-		private GameObject[] gameObjects;
 
-		[Header("Screen manager")] [SerializeField]
-		private ScreenTransitionManager screenManager;
+		[Header("GameObjects which send the dead notification")] 
+		[SerializeField] private GameObject[] gameObjects;
+
+		[Header("Screen manager")] 
+		[SerializeField] private ScreenTransitionManager screenManager;
 
 		private void Awake() {
 			foreach (var currentObject in gameObjects) {

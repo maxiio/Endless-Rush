@@ -6,14 +6,13 @@ using UnityEngine.Assertions.Must;
 
 namespace Audio {
 	public class AudioManager : MonoBehaviour {
-		[Header("Audio Settings")] [SerializeField]
-		private AudioSource audioSource;
+		[Header("Audio Settings")]
+		[SerializeField] private AudioSource audioSource;
 
 		[SerializeField] private ButtonAction.Actions actionAtStart = ButtonAction.Actions.PLAY;
 
-		[Header("Music Settings")] [SerializeField]
-		private float musicVolume = 0.5f;
-
+		[Header("Music Settings")]
+		[SerializeField] private float musicVolume = 0.5f;
 		[SerializeField] private bool isMusicEnabled = true;
 		[SerializeField] private AudioClips musicClips;
 
@@ -54,7 +53,7 @@ namespace Audio {
 			if (!IsMusicEnabled) {
 				return;
 			}
-			
+
 			if (!clip) {
 				Debug.LogWarning("Can't play null clip");
 				return;
