@@ -12,4 +12,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef1015b14c0f48659c17b97e223ecbc8, type: 3}
   m_Name: AudioClips
   m_EditorClassIdentifier: 
-  clips: []
+  clips:
+  - action: 7
+    audioClip: {fileID: 8300000, guid: c2f074f2d913d7c47b0cc4778ce38599, type: 3}
+    isLoop: 0
+  - action: 3
+    audioClip: {fileID: 8300000, guid: 9cdadbe55b5408f4784f5c63d78a016f, type: 3}
+    isLoop: 1
+  - action: 6
+    audioClip: {fileID: 8300000, guid: 9d64e8f937c052b45a35989323309298, type: 3}
+    isLoop: 0
+  - action: 1
+    audioClip: {fileID: 8300000, guid: f00da879aee874b44bf30863914723aa, type: 3}
+    isLoop: 1
+  - action: 8
+    audioClip: {fileID: 8300000, guid: c6699e4fcbfac9d44b04dce4796f336e, type: 3}
+    isLoop: 0
+  - action: 2
+    audioClip: {fileID: 8300000, guid: ce2ea9883c4c10944a1d56362277629b, type: 3}
+    isLoop: 1
+  - action: 5
+    audioClip: {fileID: 8300000, guid: f00da879aee874b44bf30863914723aa, type: 3}
+    isLoop: 1
+  - action: 4
+    audioClip: {fileID: 8300000, guid: f00da879aee874b44bf30863914723aa, type: 3}
+    isLoop: 0
