@@ -56,12 +56,16 @@ namespace Camera.Follow {
 			}
 		}
 
-		private void FixedUpdate() {
+		private void Update() {
 			CalculateNewPosition();
 		}
 
 		// Set camera position after all other object updates
 		private void LateUpdate() {
+			SetNewPosition();
+		}
+
+		private void SetNewPosition() {
 			transform.position = _lerpPosition;
 		}
 	}

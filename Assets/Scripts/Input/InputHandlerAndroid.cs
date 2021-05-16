@@ -4,10 +4,14 @@ namespace Input {
 	public class InputHandlerAndroid : MonoBehaviour, IInputHandler {
 		private Vector3 _direction;
 
-		public float GetHorizontal() {
+		public Vector3 GetDirection() {
 			SetDirection(ref _direction);
 			_direction.Normalize();
-			return _direction.z;
+			return _direction;
+		}
+		
+		public float GetHorizontal() {
+			return GetDirection().z;
 		}
 
 		// Use the next values at vector to control the game throw mobile acceleration

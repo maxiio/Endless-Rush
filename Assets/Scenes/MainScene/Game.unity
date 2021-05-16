@@ -160,18 +160,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 513511397}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &125313898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 125313897}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 525b8c875eca46e5b17906246189ac4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &255674731 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9038540496300961326, guid: cd90e0cb294b9554bab9d9d400d02cb8,
@@ -270,11 +258,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4139867690522381601, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
-        type: 3}
-      propertyPath: isSpawnPosition
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4379700544634241011, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
         type: 3}
       propertyPath: m_Name
@@ -285,96 +268,6 @@ PrefabInstance:
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 941109853}
-    - target: {fileID: 4711959095278862363, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
-        type: 3}
-      propertyPath: _cameraTransform
-      value: 
-      objectReference: {fileID: 941109853}
-    - target: {fileID: 4711959095278862363, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
-        type: 3}
-      propertyPath: _isXAutorotation
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4711959095278862363, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
-        type: 3}
-      propertyPath: _isYAutorotation
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4711959095278862363, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
-        type: 3}
-      propertyPath: _isZAutorotation
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4711959095278862363, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
-        type: 3}
-      propertyPath: isCameraRotationDirection
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413355507899222547, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
-        type: 3}
-      propertyPath: lerpSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413355507899222547, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
-        type: 3}
-      propertyPath: speedVertical
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413355507899222547, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
-        type: 3}
-      propertyPath: _speedVertical
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413355507899222547, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
-        type: 3}
-      propertyPath: speedHorizontal
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5413355507899222547, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
-        type: 3}
-      propertyPath: _speedHorizontal
-      value: -2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5685957316787930176, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
-        type: 3}
-      propertyPath: health
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5685957316787930176, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
-        type: 3}
-      propertyPath: _health
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5685957316787930176, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
-        type: 3}
-      propertyPath: _isDestroyed
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5685957316787930176, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
-        type: 3}
-      propertyPath: IsDamageOther
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5685957316787930176, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
-        type: 3}
-      propertyPath: isDamageOther
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5932358530262441449, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
-        type: 3}
-      propertyPath: _defaultDamage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5932358530262441449, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
-        type: 3}
-      propertyPath: _hitSummaryTime
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5932358530262441449, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
-        type: 3}
-      propertyPath: _hitCallPerSecond
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 7305720815878289098, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
         type: 3}
       propertyPath: m_RootOrder
@@ -429,26 +322,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 8293740663597793286, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.93969274
-      objectReference: {fileID: 0}
-    - target: {fileID: 8293740663597793286, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.34202006
-      objectReference: {fileID: 0}
-    - target: {fileID: 8293740663597793286, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8293740663597793286, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 337bc6a5b31ee8b42ba0dfc88f71c8f6, type: 3}
@@ -800,7 +673,7 @@ PrefabInstance:
     - target: {fileID: 4776200833758646102, guid: 3fb3449ea476e0a45ac202a21194c295,
         type: 3}
       propertyPath: lerpSpeed
-      value: 20
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4776200833758646102, guid: 3fb3449ea476e0a45ac202a21194c295,
         type: 3}
