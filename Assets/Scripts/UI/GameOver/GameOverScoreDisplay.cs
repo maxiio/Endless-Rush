@@ -31,9 +31,8 @@ namespace UI.GameOver {
 			}
 		}
 
-		private void Start() {
+		private void OnEnable() {
 			foreach (var text in _textsOfCurrentScore) {
-				//SetScoreToText(text, scoreManager.ScoreData.GetIntScore(scoreManager));
 				SetScoreToText(text, (int)scoreManager.CurrentScore);
 			}
 
@@ -52,8 +51,8 @@ namespace UI.GameOver {
 			text.text = ReplaceNumberForNewNumber(text.text, score.ToString());
 		}
 
-		private string ReplaceNumberForNewNumber(string defaultString, string newNumber) {
-			var newString = Regex.Replace(defaultString, "[0-9]{2,}", newNumber);
+		public static string ReplaceNumberForNewNumber(string defaultString, string newNumber) {
+			var newString = Regex.Replace(defaultString, "[0-9]{1,}", newNumber);
 			return newString;
 		}
 	}
