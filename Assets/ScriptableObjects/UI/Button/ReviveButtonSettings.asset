@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ReviveButtonSettings
   m_EditorClassIdentifier: 
   isEnabled: 1
-  maxCountOfUsage: 2
+  maxCountOfUsage: 1
   action: 8
