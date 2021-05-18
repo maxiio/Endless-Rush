@@ -30,7 +30,7 @@ This project requires Unity3D (2019.4.24f1+) to build and run. Clone this reposi
   * [magiccap gameover](https://freesound.org/people/vanceparley/sounds/412082/)
   * [clinthammermusic-gamerstep-bass-triplets](https://freesound.org/people/Clinthammer/sounds/179511/)
 
-## Game Features
+## Game Features :checkered_flag:
 - [X] Camera follow
 - [X] Heal objects that restore health
 - [X] Objects health displayed
@@ -44,7 +44,7 @@ This project requires Unity3D (2019.4.24f1+) to build and run. Clone this reposi
 - [X] Auto generated levels
 - [ ] Set the movement at touches on the Android
 
-## ToDo
+## ToDo :bookmark_tabs:
 - [X] Release the game
 - [X] Create README file for this game
 
