@@ -6,11 +6,17 @@
 [<img alt='Play it online' align="left" src='GitHub/badges/play-online-badge.png' width="180px" style="padding:15px"/><br /><br />](https://simmer.io/@Krecker/snake-rush "Play it online")
 
 ## Gameplay :video_game:
-You can control the player on PC using the A + D buttons and acceleration on the android.
-
-You must score as many points as possible.
 
 ![Game Preview](GitHub/gifs/gameplay.gif)
+
+### How to control
+PC: Use the A + D buttons.
+
+Android: Rotate your smartphone.
+
+### Goal
+
+Score as many points as possible.
 
 ## Getting Started :traffic_light:
 This project requires Unity3D (2019.4.24f1+) to build and run. Clone this repository and open the root folder in Unity.
@@ -26,20 +32,20 @@ This project requires Unity3D (2019.4.24f1+) to build and run. Clone this reposi
 
 ## Game Features
 - [X] Camera follow
-- [X] Some object can heals other
-- [X] Display objects health
-- [X] Autorotation text to camera
-- [X] Set score
-- [X] Display score
-- [X] Save max score to memory
-- [X] Screen manager
+- [X] Heal objects that restore health
+- [X] Objects health displayed
+- [X] Text directed towards the camera
+- [X] Points scoring
+- [X] Score displayed
+- [X] Max score saved to the memory
+- [X] UI manager
 - [X] Audio manager
-- [X] Input control for Android and PC
-- [X] Level auto generation
+- [X] Input handler for Android and PC
+- [X] Auto generated levels
 - [ ] Set the movement at touches on the Android
 
 ## ToDo
-- [X] Realise the game
-- [X] Make the README for this game
+- [X] Release the game
+- [X] Create README file for this game
 
-- [ ] Download assets and redesign the visual of the game
+- [ ] Download new assets and redesign the visual of the game
