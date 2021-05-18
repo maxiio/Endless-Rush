@@ -3,7 +3,7 @@
 ## Game preview :movie_camera:
 ![Game Preview](GitHub/gifs/preview.gif)
 
-[<img alt='Play it online' align="left" src='GitHub/badges/play-online-badge.png' width="180px" style="padding:15px"/><br />](https://simmer.io/@Krecker/snake-rush "Play it online")
+[<img alt='Play it online' align="left" src='GitHub/badges/play-online-badge.png' width="180px" style="padding:15px"/><br /><br />](https://simmer.io/@Krecker/snake-rush "Play it online")
 
 ## Gameplay :video_game:
 You can control the player on PC using the A + D buttons and acceleration on the android.
