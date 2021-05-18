@@ -3,6 +3,7 @@
 ## Game preview :movie_camera:
 ![Game Preview](GitHub/gifs/preview.gif)
 
+### Links
 [<img alt='Play it online' align="left" src='GitHub/badges/play-online-badge.png' width="180px" style="padding:15px"/><br /><br />](https://simmer.io/@Krecker/snake-rush "Play it online")
 
 ## Gameplay :video_game:
