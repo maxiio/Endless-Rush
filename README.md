@@ -1,9 +1,8 @@
 # [![Game Logo](GitHub/logo/transparent-cube-icon-32.PNG)](https://github.com/Matvei-Fadeev/Endless-Rush) Endless-Rush
 
-[<img alt='Play it online' src='GitHub/badges/play-online-badge.png' width="200px" style="padding:15px"/>](https://simmer.io/@Krecker/snake-rush "Play it online")
-
 ## Game preview :movie_camera:
 ![Game Preview](GitHub/gifs/preview.gif)
+[<img alt='Play it online' src='GitHub/badges/play-online-badge.png' width="180px" style="padding:15px"/>](https://simmer.io/@Krecker/snake-rush "Play it online")
 
 ## Gameplay :video_game:
 You can control the player on PC using the A + D buttons and acceleration on the android.
@@ -24,9 +23,22 @@ This project requires Unity3D (2019.4.24f1+) to build and run. Clone this reposi
   * [magiccap gameover](https://freesound.org/people/vanceparley/sounds/412082/)
   * [clinthammermusic-gamerstep-bass-triplets](https://freesound.org/people/Clinthammer/sounds/179511/)
 
-## Todo
+## Game Features
+- [X] Camera follow
+- [X] Some object can heals other
+- [X] Display objects health
+- [X] Autorotation text to camera
+- [X] Set score
+- [X] Display score
+- [X] Save max score to memory
+- [X] Screen manager
+- [X] Audio manager
+- [X] Input control for Android and PC
+- [X] Level auto generation
+- [ ] Set the movement at touches on the Android
+
+## ToDo
 - [X] Realise the game
 - [X] Make the README for this game
-- [ ] Set the movement at touches on the Android
+
 - [ ] Download assets and redesign the visual of the game
-  
