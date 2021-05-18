@@ -9,6 +9,9 @@ Assets/AssetStoreTools*
 # Git
 *.gitattributes
 
+# GitHub Unused Folder
+GitHub/Unused/*
+
 # IDEA Rider
 .idea/
 *.idea
@@ -49,4 +52,5 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
 
