@@ -63,6 +63,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.392}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -192,7 +193,7 @@ PrefabInstance:
     - target: {fileID: 2445939994980855670, guid: f88eb358265a80242a93ca677588486b,
         type: 3}
       propertyPath: m_Text
-      value: 'SNAKE
+      value: 'ZOMBIE
 
         RUSH'
       objectReference: {fileID: 0}

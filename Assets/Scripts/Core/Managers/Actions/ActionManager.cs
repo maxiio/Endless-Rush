@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 namespace Core.Managers.Actions {
 	public class ActionManager : MonoBehaviour {
 		[Header("Object to revive")]
-		[SerializeField] private GameObject[] gameObjects;
+		[SerializeField] private GameObject player;
 
 		[Header("Revive option")]
 		[SerializeField] private Vector3 offsetPosition = new Vector3(5, 0, 0);
@@ -25,6 +25,10 @@ namespace Core.Managers.Actions {
 		}
 
 		private void Awake() {
+			if (!player) {
+				player = GameObject.FindGameObjectWithTag("Player");
+			}
+			
 			_defaultTimeScale = Time.timeScale;
 			ButtonAction.RequestedAction += RequestHandler;
 		}
@@ -62,10 +66,9 @@ namespace Core.Managers.Actions {
 		}
 
 		private void Revive() {
-			foreach (var currentObject in gameObjects) {
-				currentObject.GetComponent<Transform>().position += offsetPosition;
-				currentObject.GetComponent<HealthComponent>()?.Revive(currentObject);
-			}
+			player.SetActive(true);
+			player.GetComponent<Transform>().position += offsetPosition;
+			player.GetComponent<HealthComponent>()?.Revive(player);	
 		}
 
 		private void Pause() {

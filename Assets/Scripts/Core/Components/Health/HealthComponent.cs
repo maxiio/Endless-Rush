@@ -33,6 +33,7 @@ namespace Core.Components.Health {
 				_isDie = value;
 				if (value) {
 					IsDieEvent?.Invoke(this, EventArgs.Empty);
+					SetDeath();
 				}
 			}
 		}
@@ -58,6 +59,10 @@ namespace Core.Components.Health {
 			if (!_isDie) {
 				Health += healthToHeal;
 			}
+		}
+
+		private void SetDeath() {
+			gameObject.SetActive(false);
 		}
 
 		public void Revive(GameObject gameObjectToChange) {
