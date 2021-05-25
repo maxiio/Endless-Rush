@@ -12,6 +12,10 @@ namespace Core.Managers.MapTeleport {
 		private bool isNeedOneMorePlatform;
 
 		private void Awake() {
+			if (!player) {
+				player = GameObject.FindGameObjectWithTag("Player");
+			}
+			
 			if (isNeedOneMorePlatform) {
 				isNeedOneMorePlatform = false;
 				var cloneOfObject = Instantiate(gameObject);

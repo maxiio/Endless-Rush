@@ -9,15 +9,14 @@ namespace Core.Managers.GameOver {
 		public static event EventHandler<ButtonAction.Actions> IsGameOver;
 
 		[Header("GameObjects which send the dead notification")] 
-		[SerializeField] private GameObject[] gameObjects;
+		[SerializeField] private GameObject player;
 
 		[Header("Screen manager")] 
 		[SerializeField] private ScreenTransitionManager screenManager;
 
 		private void Awake() {
-			foreach (var currentObject in gameObjects) {
-				currentObject.GetComponent<HealthComponent>().IsDieEvent += GameOverSender;
-			}
+			var player = GameObject.FindGameObjectWithTag("Player");
+			player.GetComponent<HealthComponent>().IsDieEvent += GameOverSender;
 		}
 
 		private void GameOverSender(object sender, EventArgs e) {

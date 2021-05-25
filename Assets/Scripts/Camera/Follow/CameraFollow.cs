@@ -25,7 +25,7 @@ namespace Camera.Follow {
 
 		private void Awake() {
 			if (!target) {
-				throw new Exception("No target at camera");
+				target = GameObject.FindGameObjectWithTag("Player").transform;
 			}
 
 			// Set to offset the start default camera position

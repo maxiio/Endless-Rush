@@ -48,6 +48,12 @@ namespace Core.Managers.LevelGeneration {
 		private readonly System.Random _rand = new System.Random();
 		private IEnumerator<WaitForSeconds> _levelGeneratorCoroutine;
 
+		private void Awake() {
+			if (!player) {
+				player = GameObject.FindGameObjectWithTag("Player");
+			}
+		}
+
 		private void Start() {
 			_levelGeneratorCoroutine = GenerateLevel();
 			StartCoroutine(_levelGeneratorCoroutine);
