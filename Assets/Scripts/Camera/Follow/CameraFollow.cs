@@ -14,6 +14,7 @@ namespace Camera.Follow {
 		private Transform target;
 
 		[SerializeField] private Axis freezeAxis;
+		[SerializeField] private bool useLerp;
 		[SerializeField] private float lerpSpeed;
 
 		[SerializeField] private bool isUsePositionOffset;
@@ -57,12 +58,17 @@ namespace Camera.Follow {
 		}
 
 		private void Update() {
-			CalculateNewPosition();
+			if (useLerp) {
+				CalculateNewPosition();
+				SetNewPosition();
+			}
+			else {
+				SetCameraAbove();
+			}
 		}
 
-		// Set camera position after all other object updates
-		private void LateUpdate() {
-			SetNewPosition();
+		private void SetCameraAbove() {
+			transform.position = target.position + positionOffset;
 		}
 
 		private void SetNewPosition() {
