@@ -63,6 +63,7 @@ namespace Core.Managers.Actions {
 
 		private void Revive() {
 			foreach (var currentObject in gameObjects) {
+				currentObject.SetActive(true);
 				currentObject.GetComponent<Transform>().position += offsetPosition;
 				currentObject.GetComponent<HealthComponent>()?.Revive(currentObject);
 			}
