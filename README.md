@@ -1,15 +1,16 @@
 # [![Game Logo](GitHub/logo/transparent-cube-icon-32.PNG)](https://github.com/Matvei-Fadeev/Endless-Rush) Endless-Rush
 
 ## Game preview :movie_camera:
-![Game Preview](GitHub/gifs/preview.gif)
+<!---![Game Preview](GitHub/gifs/preview.gif)-->
+![Game Preview](GitHub/gifs/ZombieRushShort.gif)
 
 ### Links
-[<img alt='Play it online' align="left" src='GitHub/badges/play-online-badge.png' width="180px" style="padding:15px"/><br /><br />](https://simmer.io/@Krecker/snake-rush "Play it online")
+<!---[<img alt='Play it online' align="left" src='GitHub/badges/play-online-badge.png' width="180px" style="padding:15px"/><br /><br />](https://simmer.io/@Krecker/snake-rush "Play it online")-->
+[<img alt='Play it online' align="left" src='GitHub/badges/play-online-badge.png' width="180px" style="padding:15px"/><br /><br />](https://simmer.io/@Krecker/Zombie-Rush "Play it online")
 
 ## Gameplay :video_game:
-
-![Game Preview](GitHub/gifs/gameplay.gif)
-
+<!---![Game Preview](GitHub/gifs/gameplay.gif)-->
+![Game Preview](GitHub/gifs/ZombieRushFull.gif)
 ### How to control
 PC: Use the A + D buttons.
 
@@ -24,6 +25,7 @@ This project requires Unity3D (2019.4.24f1+) to build and run. Clone this reposi
 
 ## Libraries and Resources Used :books:
 
+* [Kenney Models](https://www.kenney.nl/assets/medieval-town-base)
 * [Kenney Fonts](https://www.kenney.nl/assets/kenney-fonts)
 * [Music (freesound)](https://freesound.org/)
   * [Atmospheric Video Game Tune](https://freesound.org/people/SRJA_Gaming/sounds/545392/)
@@ -48,5 +50,4 @@ This project requires Unity3D (2019.4.24f1+) to build and run. Clone this reposi
 ## ToDo :bookmark_tabs:
 - [X] Release the game
 - [X] Create README file for this game
-
-- [ ] Download new assets and redesign the visual of the game
+- [X] Download new assets and redesign the visual of the game
