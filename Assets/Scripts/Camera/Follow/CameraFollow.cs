@@ -68,7 +68,9 @@ namespace Camera.Follow {
 		}
 
 		private void SetCameraAbove() {
-			transform.position = target.position + positionOffset;
+			var newPosition = target.position + positionOffset;
+			FreezeCameraMovementAxis(ref newPosition);
+			transform.position = newPosition;
 		}
 
 		private void SetNewPosition() {

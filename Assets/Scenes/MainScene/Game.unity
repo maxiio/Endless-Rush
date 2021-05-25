@@ -381,18 +381,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1625877842}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1472112532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1472112531}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 525b8c875eca46e5b17906246189ac4e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1472112543 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3149987681504905306, guid: fd74df7e93881c6498b2962560293395,
@@ -477,8 +465,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5680203807427744287, guid: fd74df7e93881c6498b2962560293395, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd74df7e93881c6498b2962560293395, type: 3}
 --- !u!1001 &1630711321
 PrefabInstance:
@@ -825,6 +812,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _target
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4776200833758646102, guid: 3fb3449ea476e0a45ac202a21194c295,
+        type: 3}
+      propertyPath: useLerp
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4776200833758646102, guid: 3fb3449ea476e0a45ac202a21194c295,
         type: 3}
@@ -1284,6 +1276,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670283650276357493, guid: 136ac0eb9df4f8945a88af9d0afd17cc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 136ac0eb9df4f8945a88af9d0afd17cc, type: 3}
