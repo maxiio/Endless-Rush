@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 5413355507899222547}
   - component: {fileID: 125313909}
   - component: {fileID: 3245337939429463597}
-  - component: {fileID: 2176052548314347960}
+  - component: {fileID: 275161443}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -67,6 +67,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -91,6 +92,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &622326011000988879
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -237,9 +239,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4d29143cf284111926d0d67e9e3bcf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxXAxisSpeed: 8
+  maxSpeed: {x: 8, y: 0, z: 0}
   lerpSpeed: 1
---- !u!114 &2176052548314347960
+--- !u!114 &275161443
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -311,6 +313,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.9339623, g: 0.039649326, b: 0.039649326, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
