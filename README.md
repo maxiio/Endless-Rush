@@ -10,7 +10,8 @@
 
 ## Gameplay :video_game:
 <!---![Game Preview](GitHub/gifs/gameplay.gif)-->
-![Game Preview](GitHub/gifs/ZombieRushFull.gif)
+[<img src="GitHub/gifs/ZombieRushFull.gif" title="Gameplay gif" height="600"/>]
+
 ### How to control
 PC: Use the A + D buttons.
 
@@ -45,7 +46,7 @@ This project requires Unity3D (2019.4.24f1+) to build and run. Clone this reposi
 - [X] Audio manager
 - [X] Input handler for Android and PC
 - [X] Auto generated levels
-- [ ] Set the movement at touches on the Android
+- [X] Set the movement at touches on the Android
 
 ## ToDo :bookmark_tabs:
 - [X] Release the game
