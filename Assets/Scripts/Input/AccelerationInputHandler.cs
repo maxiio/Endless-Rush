@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 namespace Input {
-	public class InputHandlerAndroid : MonoBehaviour, IInputHandler {
+	public class AccelerationInputHandler : MonoBehaviour, IInputHandler {
 		private Vector3 _direction;
 
 		public Vector3 GetDirection() {
