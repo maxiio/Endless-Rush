@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 429030964880094339}
   - component: {fileID: 5680203807386426853}
   - component: {fileID: 7196157290492487869}
-  - component: {fileID: 5680203807427744287}
+  - component: {fileID: 1472112532}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -327,7 +327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea4d242ef03a4a189f384f75564e0c20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -2
+  speed: 2
   enabledX: 0
   enabledY: 0
   enabledZ: 1
@@ -345,7 +345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: {x: 8, y: 0, z: 0}
   lerpSpeed: 2
---- !u!114 &5680203807427744287
+--- !u!114 &1472112532
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -354,9 +354,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8220178952030568803}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30d3277188c8407699bf493ba045ffee, type: 3}
+  m_Script: {fileID: 11500000, guid: 38035b4856b2472c9107ed2c0660c8e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 3149987681504905306}
+  useNormalizedDirection: 1
 --- !u!1001 &5316848573663946780
 PrefabInstance:
   m_ObjectHideFlags: 0
