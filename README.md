@@ -1,16 +1,13 @@
 # [![Game Logo](GitHub/logo/transparent-cube-icon-32.PNG)](https://github.com/Matvei-Fadeev/Endless-Rush) Endless-Rush
 
 ## Game preview :movie_camera:
-<!---![Game Preview](GitHub/gifs/preview.gif)-->
-![Game Preview](GitHub/gifs/ZombieRushShort.gif)
+![Game Preview](GitHub/gifs/preview.gif)
 
 ### Links
-<!---[<img alt='Play it online' align="left" src='GitHub/badges/play-online-badge.png' width="180px" style="padding:15px"/><br /><br />](https://simmer.io/@Krecker/snake-rush "Play it online")-->
-[<img alt='Play it online' align="left" src='GitHub/badges/play-online-badge.png' width="180px" style="padding:15px"/><br /><br />](https://simmer.io/@Krecker/Zombie-Rush "Play it online")
+[<img alt='Play it online' align="left" src='GitHub/badges/play-online-badge.png' width="180px" style="padding:15px"/><br /><br />](https://simmer.io/@Krecker/snake-rush "Play it online")
 
 ## Gameplay :video_game:
-<!---![Game Preview](GitHub/gifs/gameplay.gif)-->
-[<img src="GitHub/gifs/ZombieRushFull.gif" title="Gameplay gif" height="600"/>]
+![Game Preview](GitHub/gifs/gameplay.gif)
 
 ### How to control
 PC: Use the A + D buttons.
@@ -46,9 +43,7 @@ This project requires Unity3D (2019.4.24f1+) to build and run. Clone this reposi
 - [X] Audio manager
 - [X] Input handler for Android and PC
 - [X] Auto generated levels
-- [X] Set the movement at touches on the Android
 
 ## ToDo :bookmark_tabs:
 - [X] Release the game
 - [X] Create README file for this game
-- [X] Download new assets and redesign the visual of the game
